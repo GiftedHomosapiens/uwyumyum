@@ -7,13 +7,15 @@
 :root{--bg:#faf7f2;--paper:#fffefa;--ink:#302e29;--muted:#746f64;--line:#e9e3d9;--accent:#ad4b22;--soft:#fae8db}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}body[data-mode=drink]{--accent:#396447;--soft:#e2eddc}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}a{color:var(--accent)}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}[hidden]{display:none!important}.shell{width:min(1120px,calc(100% - 32px));margin:auto}.topbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}.brand{font-weight:800}.brand span{color:var(--accent)}.place{font-size:11px;color:var(--muted)}.hero{text-align:center;padding:40px 0 30px}.eyebrow{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:3px}h1{font-size:clamp(32px,5vw,52px);margin:12px 0;letter-spacing:-2px}.hero p{color:var(--muted)}.tabs{display:inline-flex;padding:6px;gap:6px;background:#eee9e1;border-radius:18px}.tab{border:0;background:transparent;color:var(--muted);padding:12px 24px;border-radius:13px;font-weight:700}.tab[aria-selected=true]{background:var(--paper);color:var(--accent);box-shadow:0 3px 10px #281e140f}.layout{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start}.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 18px 60px #3f2d190f}.wheel-card{text-align:center}.card-top,.filter-heading,.candidate-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.section-label,.hint,.filter-description{font-size:12px;color:var(--muted)}.badge{background:var(--soft);color:var(--accent);padding:5px 12px;border-radius:100px;font-size:12px;font-weight:700}.wheel-stage{position:relative;width:min(100%,450px);aspect-ratio:1;margin:26px auto 20px}canvas{display:block;width:100%;height:100%}.pointer{position:absolute;z-index:2;top:-5px;left:50%;transform:translateX(-50%);width:24px;height:34px;background:var(--ink);clip-path:polygon(0 0,100% 0,50% 100%)}.hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24%;aspect-ratio:1;border-radius:50%;background:var(--paper);border:7px solid #ffffffa6;display:grid;place-content:center;box-shadow:0 4px 20px #321e0a1a;pointer-events:none}.hub-icon{font-size:36px}.hub small{font-size:10px;color:var(--muted)}.primary{display:block;border:0;border-radius:14px;background:var(--accent);color:white;font-weight:700;padding:14px 20px;min-height:50px;text-decoration:none}#spin{width:min(100%,320px);margin:auto}.empty{color:var(--accent);font-size:14px}h2{font-size:19px;margin:0}.text-button{border:0;background:transparent;color:var(--accent);padding:8px;font-size:12px}fieldset{border:0;padding:0;margin:0 0 22px;min-width:0}fieldset:last-child{margin-bottom:0}legend{font-size:13px;font-weight:700;margin-bottom:10px}legend span{font-size:11px;color:var(--muted);font-weight:400;margin-left:8px}.options{display:flex;flex-wrap:wrap;gap:8px}.option{position:relative}.option input{position:absolute;width:1px;height:1px;opacity:0}.option span{display:block;padding:8px 12px;border:1px solid var(--line);border-radius:11px;font-size:12px;cursor:pointer}.option input:checked+span{background:var(--soft);border-color:var(--accent);color:var(--accent);font-weight:700}.option input:focus-visible+span{outline:3px solid var(--accent);outline-offset:3px}.option input:disabled+span{opacity:.5;cursor:not-allowed}.candidates{margin-top:24px}.candidate-heading{margin-bottom:18px}.candidate-heading small{font-size:12px;color:var(--muted)}.store-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.store{display:flex;gap:10px;padding:13px;border:1px solid var(--line);border-radius:13px;min-width:0}.store-number{flex:0 0 26px;height:26px;background:var(--soft);color:var(--accent);display:grid;place-items:center;border-radius:50%;font-size:11px;font-weight:800}.store-content{min-width:0}.store a{color:var(--ink);font-size:13px;font-weight:700;text-decoration:none}.store a:hover{text-decoration:underline}.store small{display:block;color:var(--muted);font-size:11px;margin-top:4px}footer{text-align:center;color:var(--muted);font-size:11px;padding:30px 0}footer a{margin:0 5px}dialog{width:min(440px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow:auto;border:1px solid var(--line);border-radius:26px;background:var(--paper);color:var(--ink);padding:32px;text-align:center;box-shadow:0 30px 100px #0003}dialog::backdrop{background:#23201b73;backdrop-filter:blur(5px)}.close{position:absolute;right:12px;top:10px;border:0;background:transparent;width:38px;height:38px;font-size:25px;color:var(--muted)}.result-icon{font-size:48px;margin-top:10px}.result-kicker{color:var(--accent);font-size:13px}#result-name{font-size:26px;overflow-wrap:anywhere}#result-meta{color:var(--muted);font-size:12px}.recommendation{background:var(--soft);padding:16px;border-radius:14px;text-align:left}.recommendation small{color:var(--accent);font-weight:700}#result-note{font-size:14px;margin:6px 0 0}.result-actions{display:grid;gap:10px;margin-top:22px}.secondary{border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);padding:12px;min-height:46px}@media(max-width:860px){.layout{grid-template-columns:1fr}.store-list{grid-template-columns:repeat(2,minmax(0,1fr))}.wheel-stage{width:min(100%,400px)}}@media(max-width:480px){.topbar{min-height:64px}.place{font-size:9px}.hero{padding-top:30px}.hero p{font-size:13px}.tab{padding:11px 18px;font-size:14px}.card{padding:20px}.store-list{grid-template-columns:1fr}.hub-icon{font-size:28px}.candidate-heading small{max-width:110px;text-align:right}dialog{padding:28px 22px}}
 
 #search{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--paper);color:var(--ink);font:inherit;margin:8px 0 16px}.search-label{font-size:12px;color:var(--muted)}.store-list{max-height:540px;overflow:auto;overscroll-behavior:contain;padding:3px}.store .source{display:block;color:var(--accent);font-size:11px;font-weight:400;margin-top:4px}.directory-note{font-size:11px;color:var(--muted)}
+
+.header-right{display:flex;align-items:center;gap:14px}.language-button{border:1px solid var(--line);background:var(--paper);color:var(--accent);border-radius:10px;padding:7px 12px;font-weight:700;font-size:12px}.credit{font-size:12px;letter-spacing:1px;color:var(--accent);font-weight:700;margin-top:18px}.tab{max-width:48vw}html[lang=en] legend span{margin-left:6px}@media(max-width:480px){.header-right{gap:8px}.header-right .place{display:none}.tab{padding:11px 13px}html[lang=en] h1{letter-spacing:-1px;font-size:34px}}
 </style></head>
 <body data-mode="food"><div class="shell">
-<header class="topbar"><div class="brand">今天<span>吃喝</span>什么？</div><div class="place">UW · UD + UV · SEATTLE</div></header>
-<main><section class="hero"><div class="eyebrow">A LITTLE SPIN, A HAPPY DAY</div><h1 id="headline">今天吃什么？</h1><p class="hint" id="coverage"></p><p id="subtitle">把纠结交给转盘，把胃留给好吃的。</p><div class="tabs" role="tablist" aria-label="选择吃喝模式"><button class="tab" id="tab-food" role="tab" aria-selected="true" aria-controls="panel" tabindex="0" data-mode="food">🍜 今天吃什么</button><button class="tab" id="tab-drink" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-mode="drink">🧋 今天喝什么</button></div></section>
-<section id="panel" role="tabpanel" aria-labelledby="tab-food"><div class="layout"><section class="card wheel-card" aria-label="随机抽签转盘"><div class="card-top"><span class="section-label">今日的灵感，转出来</span><span id="count" class="badge" role="status" aria-live="polite"></span></div><div class="wheel-stage"><div class="pointer" aria-hidden="true"></div><canvas id="wheel" width="600" height="600" role="img" aria-label="候选店铺转盘，编号对应下方列表">候选店铺见下方列表。</canvas><div class="hub" aria-hidden="true"><div class="hub-icon" id="hub-icon">🍜</div><small>LET'S GO</small></div></div><button id="spin" class="primary">转一下，开饭！ ↗</button><p id="spin-status" class="hint" role="status" aria-live="polite">每家候选店等概率 · 转盘编号对应下方列表</p><p id="empty" class="empty" role="status" hidden>没有找到匹配的店铺，试试放宽条件吧！</p></section><section class="card" aria-labelledby="filter-title"><div class="filter-heading"><h2 id="filter-title">先选一点偏好</h2><button id="reset" class="text-button">重置筛选 ↺</button></div><p class="filter-description">多选条件组内满足任一项即可，组与组之间需同时满足。</p><form id="filters" aria-label="筛选店铺"></form></section></div><section class="card candidates" aria-labelledby="candidate-title"><div class="candidate-heading"><h2 id="candidate-title">今天的候选清单</h2><small id="list-count">点击店名，在地图上看看 ↗</small></div><label class="search-label" for="search">搜索候选店铺</label><input id="search" type="search" placeholder="搜索店名或地址…"><ol id="store-list" class="store-list"></ol><p id="list-empty" class="hint" hidden>放宽筛选，让更多好店加入转盘。</p></section></section></main>
-<footer><p>少一点纠结，多一点好吃的。Made for hungry Huskies ♡</p><p>预算和口味沿用原有参考标签；新增门店未确认的价格、冷热与糖度标为“待核实”。“不限”会包括未知资料，默认不抽取尚未开业门店；可在“名单状态”中选择查看。</p><p>范围：UD 采用 U-District 官方餐饮目录的街区口径；UV 采用 University Village 商场目录。名单核对：2026-10-12。公开目录可能滞后或漏收新店，本页不声称覆盖实时全部门店，也不查询实时营业状态。</p><p>门店名单参考：<a href="https://udistrictseattle.com/business-category/food-drink" target="_blank" rel="noopener noreferrer">U-District 餐饮总目录</a><a href="https://udistrictseattle.com/bobafest/menu" target="_blank" rel="noopener noreferrer">Boba Fest 名单</a><a href="https://uvillage.com/directory/" target="_blank" rel="noopener noreferrer">U-Village 官方目录</a></p></footer></div>
-<dialog id="result" aria-labelledby="result-name" aria-describedby="result-note"><button id="close-result" class="close" aria-label="关闭结果弹窗" autofocus>×</button><div id="result-icon" class="result-icon" aria-hidden="true">🍜</div><p id="result-kicker" class="result-kicker">今天就吃：</p><h2 id="result-name"></h2><p id="result-meta"></p><p class="directory-note" id="result-address"></p><a id="result-source" target="_blank" rel="noopener noreferrer">查看门店信息 ↗</a><div class="recommendation"><small>招牌 / 点单灵感</small><p id="result-note"></p></div><div class="result-actions"><a id="result-map" class="primary" target="_blank" rel="noopener noreferrer">Google Maps 看位置 ↗</a><button id="again" class="secondary">换一个 / 再抽一次 ↻</button></div><p id="reroll-hint" class="hint"></p></dialog>
+<header class="topbar"><div class="brand" id="brand">今天<span>吃喝</span>什么？</div><div class="header-right"><div class="place">UW · UD + UV · SEATTLE</div><button id="language" class="language-button" type="button" aria-label="Switch to English">English</button></div></header>
+<main><section class="hero"><div class="eyebrow">A LITTLE SPIN, A HAPPY DAY</div><h1 id="headline">今天吃什么？</h1><p class="hint" id="coverage"></p><p id="subtitle">把纠结交给转盘，把胃留给好吃的。</p><div id="mode-tabs" class="tabs" role="tablist" aria-label="选择吃喝模式"><button class="tab" id="tab-food" role="tab" aria-selected="true" aria-controls="panel" tabindex="0" data-mode="food">🍜 今天吃什么</button><button class="tab" id="tab-drink" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-mode="drink">🧋 今天喝什么</button></div></section>
+<section id="panel" role="tabpanel" aria-labelledby="tab-food"><div class="layout"><section id="wheel-card" class="card wheel-card" aria-label="随机抽签转盘"><div class="card-top"><span id="wheel-label" class="section-label">今日的灵感，转出来</span><span id="count" class="badge" role="status" aria-live="polite"></span></div><div class="wheel-stage"><div class="pointer" aria-hidden="true"></div><canvas id="wheel" width="600" height="600" role="img" aria-label="无文字随机抽签转盘">候选店铺见下方列表。</canvas><div class="hub" aria-hidden="true"><div class="hub-icon" id="hub-icon">🍜</div><small>LET'S GO</small></div></div><button id="spin" class="primary">转一下，开饭！ ↗</button><p id="spin-status" class="hint" role="status" aria-live="polite">每家候选店等概率 · 转盘编号对应下方列表</p><p id="empty" class="empty" role="status" hidden>没有找到匹配的店铺，试试放宽条件吧！</p></section><section class="card" aria-labelledby="filter-title"><div class="filter-heading"><h2 id="filter-title">先选一点偏好</h2><button id="reset" class="text-button">重置筛选 ↺</button></div><p id="filter-description" class="filter-description">多选条件组内满足任一项即可，组与组之间需同时满足。</p><form id="filters" aria-label="筛选店铺"></form></section></div><section class="card candidates" aria-labelledby="candidate-title"><div class="candidate-heading"><h2 id="candidate-title">今天的候选清单</h2><small id="list-count">点击店名，在地图上看看 ↗</small></div><label id="search-label" class="search-label" for="search">搜索候选店铺</label><input id="search" type="search" placeholder="搜索店名或地址…"><ol id="store-list" class="store-list"></ol><p id="list-empty" class="hint" hidden>放宽筛选，让更多好店加入转盘。</p></section></section></main>
+<footer><p id="footer-tagline"></p><p id="footer-data"></p><p id="footer-scope"></p><p><span id="sources-label"></span><a id="source-ud" href="https://udistrictseattle.com/business-category/food-drink" target="_blank" rel="noopener noreferrer"></a><a id="source-boba" href="https://udistrictseattle.com/bobafest/menu" target="_blank" rel="noopener noreferrer"></a><a id="source-uv" href="https://uvillage.com/directory/" target="_blank" rel="noopener noreferrer"></a></p><p class="credit">Made by MC3K</p></footer></div>
+<dialog id="result" aria-labelledby="result-name" aria-describedby="result-note"><button id="close-result" class="close" aria-label="关闭结果弹窗" autofocus>×</button><div id="result-icon" class="result-icon" aria-hidden="true">🍜</div><p id="result-kicker" class="result-kicker">今天就吃：</p><h2 id="result-name"></h2><p id="result-meta"></p><p class="directory-note" id="result-address"></p><a id="result-source" target="_blank" rel="noopener noreferrer">查看门店信息 ↗</a><div class="recommendation"><small id="recommendation-label">招牌 / 点单灵感</small><p id="result-note"></p></div><div class="result-actions"><a id="result-map" class="primary" target="_blank" rel="noopener noreferrer">Google Maps 看位置 ↗</a><button id="again" class="secondary">换一个 / 再抽一次 ↻</button></div><p id="reroll-hint" class="hint"></p></dialog>
 <script>
 "use strict";
 // 每家实体门店只占一个扇区；数组属性支持多个筛选标签。
@@ -541,7 +543,7 @@ const storeDirectory = [
     "address": "4141 University Way NE, Suite 103, Seattle, WA 98105",
     "source": "https://udistrictseattle.com/business/boba-up",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "其他/待核实"
@@ -714,7 +716,7 @@ const storeDirectory = [
     "address": "1408 NE 40th St",
     "source": "https://udistrictseattle.com/chowdown/menu",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "沙拉/素食"
@@ -1036,7 +1038,7 @@ const storeDirectory = [
     "address": "5240 University Wy NE Ste B, Seattle, WA 98105",
     "source": "https://udistrictseattle.com/business/coldplate",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -1093,7 +1095,7 @@ const storeDirectory = [
     "address": "4725 University Way NE",
     "source": "https://udistrictseattle.com/business/dingteauw",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "日韩"
@@ -1208,7 +1210,7 @@ const storeDirectory = [
     "address": "4336 Roosevelt Way NE",
     "source": "https://udistrictseattle.com/business/donut-factory",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -1295,7 +1297,7 @@ const storeDirectory = [
     "address": "4524 University Way NE, Seattle, WA 98105",
     "source": "https://udistrictseattle.com/business/elixir",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -1324,7 +1326,7 @@ const storeDirectory = [
     "address": "1317 NE 47th St, Seattle, WA. 98105",
     "source": "https://udistrictseattle.com/business/georgecoffeeco",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -1838,7 +1840,7 @@ const storeDirectory = [
     "address": "5000 University Way NE Ste E",
     "source": "https://udistrictseattle.com/chowdown/menu",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -2357,7 +2359,7 @@ const storeDirectory = [
     "address": "4708 11th Ave NE, Seattle, WA, 98105",
     "source": "https://udistrictseattle.com/business-category/food-drink",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "越餐/东南亚"
@@ -2529,7 +2531,7 @@ const storeDirectory = [
     "address": "4507 Brooklyn Ave NE NW, Seattle, WA 98105",
     "source": "https://udistrictseattle.com/business/poindexter-coffee",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "咖啡馆/早午餐"
@@ -2760,7 +2762,7 @@ const storeDirectory = [
     "address": "4754 University Way NE",
     "source": "https://udistrictseattle.com/chowdown/menu",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -3084,7 +3086,7 @@ const storeDirectory = [
     "address": "5264 University Way, Seattle WA, 98034",
     "source": "https://udistrictseattle.com/business/snowyvillage",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -3197,7 +3199,7 @@ const storeDirectory = [
     "address": "4301 University Way NE",
     "source": "https://udistrictseattle.com/business/sweetalchemy",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -3226,7 +3228,7 @@ const storeDirectory = [
     "address": "5509 University Way NE",
     "source": "https://udistrictseattle.com/chowdown/menu",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -3547,7 +3549,7 @@ const storeDirectory = [
     "address": "1000 NE 50th St",
     "source": "https://udistrictseattle.com/business/xyq678723",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -3745,7 +3747,7 @@ const storeDirectory = [
     "address": "5201 University Way NE, Suite B",
     "source": "https://udistrictseattle.com/business/westmansbagel",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -3888,7 +3890,7 @@ const storeDirectory = [
     "address": "4744 University Way NE, Seattle, WA",
     "source": "https://udistrictseattle.com/business/yan-tea",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -4204,7 +4206,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/frans-chocolates/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -4232,7 +4234,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/frankie-jos/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -4289,7 +4291,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/hello-robin/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -4374,7 +4376,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/joe-the-juice/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "咖啡馆/早午餐"
@@ -4459,7 +4461,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/mochinut/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -4487,7 +4489,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/molly-moons-ice-cream/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -4771,7 +4773,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/the-confectionery/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -4799,7 +4801,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/the-french-guys-bakery/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": true,
     "cuisine": [
       "烘焙/甜品"
@@ -4827,7 +4829,7 @@ const storeDirectory = [
     "address": "",
     "source": "https://uvillage.com/directory/trophy-cupcakes-party/",
     "status": "目录收录",
-    "food": true,
+    "food": false,
     "drink": false,
     "cuisine": [
       "烘焙/甜品"
@@ -5007,23 +5009,33 @@ const filterConfig={
 };
 const $=id=>document.getElementById(id),canvas=$("wheel"),ctx=canvas.getContext("2d"),tabs=[...document.querySelectorAll(".tab")],dialog=$("result"),TAU=Math.PI*2;
 const preferences={food:{},drink:{}},palettes={food:["#F4BC91","#F8D9A4","#EEC4B6","#E5D6AC","#F7E4C9","#DFA88B"],drink:["#BBD2AD","#D9E4BC","#BCD8CD","#E7D8B6","#D3DFD1","#AFC4B1"]};
-let mode="food",candidates=[],rotation=0,spinning=false,lastStore=null;
+let mode="food",candidates=[],rotation=0,spinning=false,lastStore=null,language="zh";
+try{language=localStorage.getItem('mc3k-language')==='en'?'en':'zh';}catch{}
 const mod=(n,d)=>((n%d)+d)%d,asArray=v=>Array.isArray(v)?v:[v];
-function mapsURL(s){const area=s.region==="UV"?"University Village Seattle WA":"University District Seattle WA";return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent([s.name,s.address||area,"Seattle WA"].join(" "));}
-function renderFilters(){const form=$("filters");form.replaceChildren();for(const g of filterConfig[mode]){const fs=document.createElement("fieldset"),legend=document.createElement("legend"),detail=document.createElement("span"),options=document.createElement("div");legend.append(document.createTextNode(g.label));detail.textContent=`${g.english} · ${g.multi?"多选":"单选"}`;legend.append(detail);fs.append(legend);options.className="options";const values=[...g.options.map(o=>typeof o==="string"?{value:o,label:o}:o),{value:"",label:"不限"}],selected=preferences[mode][g.key]||[];for(const o of values){const label=document.createElement("label"),input=document.createElement("input"),text=document.createElement("span");label.className="option";input.type=g.multi?"checkbox":"radio";input.name=g.key;input.value=o.value;input.checked=o.value?selected.includes(o.value):selected.length===0;text.textContent=o.label;label.append(input,text);options.append(label);}fs.append(options);form.append(fs);}}
-$("filters").addEventListener("change",e=>{if(spinning||!(e.target instanceof HTMLInputElement))return;const input=e.target,g=filterConfig[mode].find(i=>i.key===input.name);if(!g)return;if(!input.value)preferences[mode][g.key]=[];else if(g.multi){const selected=new Set(preferences[mode][g.key]||[]);if(input.checked)selected.add(input.value);else selected.delete(input.value);preferences[mode][g.key]=[...selected];}else preferences[mode][g.key]=[input.value];const selected=preferences[mode][g.key]||[];for(const i of $("filters").elements)if(i instanceof HTMLInputElement&&i.name===g.key)i.checked=i.value?selected.includes(i.value):selected.length===0;updateCandidates();});
-$("filters").addEventListener("submit",e=>e.preventDefault());
-function updateCandidates(){const source=mode==="food"?foodStores:drinkStores;candidates=source.filter(s=>(s.status!=="尚未开业"||(preferences[mode].status||[]).includes("尚未开业"))&&filterConfig[mode].every(g=>{const selected=preferences[mode][g.key]||[];return !selected.length||selected.some(v=>asArray(s[g.key]).includes(v));}));rotation=0;$("count").textContent=`${candidates.length} 家候选`;$("empty").hidden=candidates.length>0;$("list-empty").hidden=candidates.length>0;$("spin").disabled=!candidates.length;$("spin-status").textContent="每家候选店等概率 · 编号对应下方列表（搜索不改变抽签范围）";renderStores();drawWheel();}
-function renderStores(){const list=$("store-list");list.replaceChildren();const query=$("search").value.trim().toLowerCase();let visible=0;candidates.forEach((s,index)=>{if(query&&!`${s.name} ${s.address}`.toLowerCase().includes(query))return;visible++;const li=document.createElement("li"),number=document.createElement("span"),content=document.createElement("div"),link=document.createElement("a"),meta=document.createElement("small");li.className="store";number.className="store-number";number.textContent=index+1;number.setAttribute("aria-hidden","true");content.className="store-content";link.textContent=s.name;link.href=mapsURL(s);link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("aria-label",`${index+1}. ${s.name}，在 Google Maps 查看`);meta.textContent=mode==="food"?`${asArray(s.cuisine).join(" / ")} · ${s.budget} · ${s.region==="UD"?"U-District":"University Village"}`:`${asArray(s.type).join(" / ")} · ${s.region==="UD"?"U-District":"University Village"}`;const address=document.createElement("small");address.textContent=s.address||(s.region==="UV"?"University Village 商场内":"地址待核实 · U-District");const source=document.createElement("a");source.className="source";source.href=s.source;source.target="_blank";source.rel="noopener noreferrer";source.textContent=s.status==="目录收录"?"查看门店信息 ↗":s.status+" · 查看信息 ↗";content.append(link,meta,address,source);li.append(number,content);list.append(li);});$("list-count").textContent=`显示 ${visible} / ${candidates.length} 家`;$("list-empty").hidden=visible>0;$("list-empty").textContent=candidates.length?"没有匹配搜索的店铺。搜索只影响列表展示，不影响抽签。":"放宽筛选，让更多好店加入转盘。";}
-function drawWheel(){const radius=278;ctx.clearRect(0,0,600,600);ctx.save();ctx.translate(300,300);ctx.beginPath();ctx.arc(0,0,radius+10,0,TAU);ctx.fillStyle="#efe9df";ctx.fill();if(!candidates.length){ctx.beginPath();ctx.arc(0,0,radius,0,TAU);ctx.fillStyle="#f3eee6";ctx.fill();ctx.restore();canvas.setAttribute("aria-label","没有匹配的候选店铺，请放宽筛选条件");return;}ctx.rotate(rotation);const step=TAU/candidates.length,palette=palettes[mode];candidates.forEach((s,index)=>{const start=-Math.PI/2-step/2+index*step,middle=start+step/2;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,radius,start,start+step);ctx.closePath();ctx.fillStyle=palette[index%palette.length];ctx.fill();ctx.strokeStyle="#fffefa";ctx.lineWidth=2;ctx.stroke();ctx.save();ctx.rotate(middle);ctx.fillStyle="#38362c";ctx.textBaseline="middle";if(candidates.length>12){ctx.font=`700 ${Math.max(10,Math.min(25,Math.floor(1400/candidates.length)))}px system-ui,sans-serif`;ctx.textAlign="center";ctx.fillText(String(index+1),radius*.77,0);}else{ctx.font="600 17px system-ui,sans-serif";ctx.textAlign="right";const prefix=`${index+1}. `;let name=s.name;if(ctx.measureText(prefix+name).width>172){while(name.length&&ctx.measureText(prefix+name+"…").width>172)name=name.slice(0,-1);name+="…";}ctx.fillText(prefix+name,radius-21,0);}ctx.restore();});ctx.restore();canvas.setAttribute("aria-label",`${candidates.length} 家店铺的等分转盘，扇区编号对应下方候选清单`);}
-function setMode(next){if(spinning||next===mode)return;mode=next;lastStore=null;$("search").value="";document.body.dataset.mode=mode;for(const tab of tabs){const active=tab.dataset.mode===mode;tab.setAttribute("aria-selected",String(active));tab.tabIndex=active?0:-1;}$("panel").setAttribute("aria-labelledby",`tab-${mode}`);$("headline").textContent=mode==="food"?"今天吃什么？":"今天喝什么？";$("subtitle").textContent=mode==="food"?"把纠结交给转盘，把胃留给好吃的。":"奶茶、咖啡还是抹茶？让今天多一点好心情。";$("hub-icon").textContent=mode==="food"?"🍜":"🧋";$("spin").textContent=mode==="food"?"转一下，开饭！ ↗":"转一下，喝点好！ ↗";renderFilters();updateCandidates();}
-tabs.forEach(tab=>{tab.addEventListener("click",()=>setMode(tab.dataset.mode));tab.addEventListener("keydown",e=>{if(!["ArrowLeft","ArrowRight","Home","End"].includes(e.key)||spinning)return;e.preventDefault();const index=tabs.indexOf(tab),next=e.key==="Home"?tabs[0]:e.key==="End"?tabs.at(-1):tabs[mod(index+(e.key==="ArrowRight"?1:-1),tabs.length)];setMode(next.dataset.mode);next.focus();});});
-$("reset").addEventListener("click",()=>{if(spinning)return;preferences[mode]={};$("search").value="";renderFilters();updateCandidates();});
-function setBusy(busy){spinning=busy;$("panel").setAttribute("aria-busy",String(busy));$("spin").disabled=busy||!candidates.length;$("reset").disabled=busy;tabs.forEach(t=>t.disabled=busy);[...$("filters").elements].forEach(i=>i.disabled=busy);$("spin").textContent=busy?"正在为你挑选…":mode==="food"?"转一下，开饭！ ↗":"转一下，喝点好！ ↗";}
+const englishLabels={"菜系":"Cuisine","口味偏好":"Flavor","预算":"Budget","类别":"Type","温度 / 季节":"Temperature","甜度 / 健康":"Sweetness","区域":"Area","名单状态":"Directory status","中餐":"Chinese","泰餐":"Thai","日韩":"Japanese / Korean","越餐/东南亚":"Vietnamese / Southeast Asian","美式/快餐":"American / Fast food","地中海/中东":"Mediterranean / Middle Eastern","印度/南亚":"Indian / South Asian","墨西哥/拉美":"Mexican / Latin American","意餐/披萨":"Italian / Pizza","夏威夷/Poke":"Hawaiian / Poke","咖啡馆/早午餐":"Café / Brunch","烘焙/甜品":"Bakery / Desserts","沙拉/素食":"Salads / Vegetarian","法餐/欧式":"French / European","其他/待核实":"Other / Unverified","重辣/麻辣":"Hot / Sichuan spicy","酸辣/开胃":"Tangy / Spicy","清淡/温和":"Light / Mild","甜/咸":"Sweet / Savory","待核实":"Unverified","波霸奶茶/鲜奶茶":"Boba / Milk tea","水果茶/特调":"Fruit tea / Specialty drinks","现磨咖啡/Espresso":"Coffee / Espresso","抹茶/特饮":"Matcha / Specialty lattes","酸奶/奶昔":"Yogurt / Milkshakes","精酿/酒吧（21+）":"Craft beer / Bars (21+)","其他饮品/待核实":"Other drinks / Unverified","冰饮/冰沙":"Iced / Blended","热饮/温热":"Hot / Warm","可调三分糖/无糖":"Low-sugar / Unsweetened options","适合全糖/甜党":"Sweet tooth","UD · U-District":"UD · U-District","UV · University Village":"UV · University Village","目录收录":"Directory-listed","资料待核实":"Details unverified","尚未开业":"Opening soon","不限":"Any"};
+const copy={zh:{brand:'今天吃喝什么？',foodTab:'🍜 今天吃什么',drinkTab:'🧋 今天喝什么',foodTitle:'今天吃什么？',drinkTitle:'今天喝什么？',foodSubtitle:'把纠结交给转盘，把胃留给好吃的。',drinkSubtitle:'奶茶、咖啡还是抹茶？让今天多一点好心情。',wheelLabel:'今日的灵感，转出来',filterTitle:'先选一点偏好',reset:'重置筛选 ↺',filterDescription:'多选条件组内满足任一项即可，组与组之间需同时满足。',candidateTitle:'今天的候选清单',searchLabel:'搜索候选店铺',searchPlaceholder:'搜索店名或地址…',empty:'没有找到匹配的店铺，试试放宽条件吧！',noSearch:'没有匹配搜索的店铺。搜索只影响列表展示，不影响抽签。',noList:'放宽筛选，让更多好店加入转盘。',idle:'每家候选店等概率 · 搜索只影响列表展示',busy:'正在为你挑选…',spinning:'正在抽签，等转盘慢慢停下来…',foodSpin:'转一下，开饭！ ↗',drinkSpin:'转一下，喝点好！ ↗',selected:'已抽中：',foodResult:'今天就吃：',drinkResult:'今天就喝：',recommendation:'招牌 / 点单灵感',maps:'Google Maps 看位置 ↗',source:'查看门店信息 ↗',again:'换一个 / 再抽一次 ↻',reroll:'再抽一次会避开这家，其余候选等概率。',single:'目前只有这一家候选，放宽筛选可以发现更多选择。',uvAddress:'University Village 商场内',udAddress:'地址待核实 · U-District',close:'关闭结果弹窗',multiple:'多选',singleChoice:'单选',modeLabel:'选择吃喝模式',wheelAria:'随机抽签转盘',filterAria:'筛选店铺',footerTagline:'少一点纠结，多一点好吃的。Made for hungry Huskies ♡',footerData:'吃什么只收录提供正餐的餐厅，不包括茶饮店、纯咖啡店和甜品店。价格、冷热与糖度未确认的标为“待核实”；尚未开业店铺默认不参与抽签。',footerScope:'范围：UD 按 U-District 官方餐饮目录街区口径；UV 按 University Village 商场目录。名单核对：2026-10-12。公开目录可能滞后或漏收新店，本页不查询实时营业状态。',sources:'名单来源：',udSource:'U-District 餐饮总目录',bobaSource:'Boba Fest 名单',uvSource:'U-Village 官方目录'},en:{brand:'What to eat & drink?',foodTab:'🍜 What to eat',drinkTab:'🧋 What to drink',foodTitle:'What to eat today?',drinkTitle:'What to drink today?',foodSubtitle:'Less deciding. More delicious discoveries.',drinkSubtitle:'Boba, coffee or matcha? A little spin for a happier day.',wheelLabel:'A little spin of inspiration',filterTitle:'Pick your preferences',reset:'Reset filters ↺',filterDescription:'Match any selected option within a group, and all selected groups.',candidateTitle:'Your shortlist today',searchLabel:'Search the shortlist',searchPlaceholder:'Search a store or address…',empty:'No matching stores. Try relaxing your filters!',noSearch:'No search matches. Search changes the list only, not the draw.',noList:'Relax your filters to discover more places.',idle:'Equal odds for every candidate · Search changes the list only',busy:'Picking your next stop…',spinning:'Spinning… let the wheel decide!',foodSpin:'Spin for a meal! ↗',drinkSpin:'Spin for a drink! ↗',selected:'Selected: ',foodResult:'Today, eat at:',drinkResult:'Today, drink at:',recommendation:'Menu inspiration',maps:'Find it on Google Maps ↗',source:'View store information ↗',again:'Pick another / Spin again ↻',reroll:'The next spin excludes this store. All remaining stores have equal odds.',single:'Only one candidate. Relax your filters to discover more options.',uvAddress:'Inside University Village',udAddress:'Address unverified · U-District',close:'Close result dialog',multiple:'Multiple',singleChoice:'Single',modeLabel:'Choose food or drinks',wheelAria:'Random selection wheel',filterAria:'Filter stores',footerTagline:'Less deciding, more delicious discoveries. Made for hungry Huskies ♡',footerData:'Food mode includes meal-serving restaurants, excluding tea shops, coffee-only cafés and dessert shops. Unconfirmed prices, temperature and sweetness are marked unverified. Opening-soon stores are excluded by default.',footerScope:'Area: UD follows the U-District food directory; UV follows the University Village shopping-center directory. List checked: October 12, 2026. Public directories may lag or miss new stores. Live opening status is not checked.',sources:'Directory sources:',udSource:'U-District food directory',bobaSource:'Boba Fest directory',uvSource:'U-Village directory'}};
+const t=k=>copy[language][k],label=v=>language==='en'?(englishLabels[v]||v):v;
+const displayName=s=>language==='en'?s.name.replace(/\s*\([^)]*[\u3400-\u9fff][^)]*\)/g,''):s.name;
+const meta=s=>`${asArray(mode==='food'?s.cuisine:s.type).map(label).join(' / ')}${mode==='food'?' · '+label(s.budget):''} · ${s.region==='UD'?'U-District':'University Village'}`;
+const address=s=>s.address||t(s.region==='UV'?'uvAddress':'udAddress');
+function mapsURL(s){const area=s.region==='UV'?'University Village Seattle WA':'University District Seattle WA';return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent([s.name,s.address||area,'Seattle WA'].join(' '));}
+function applyLanguage(){document.documentElement.lang=language==='en'?'en':'zh-CN';document.title=language==='en'?'What to eat & drink? | UW · UD + UV':'今天吃什么 & 喝什么？｜UW · UD + UV';const ids={brand:'brand','tab-food':'foodTab','tab-drink':'drinkTab','wheel-label':'wheelLabel','filter-title':'filterTitle',reset:'reset','filter-description':'filterDescription','candidate-title':'candidateTitle','search-label':'searchLabel',empty:'empty','recommendation-label':'recommendation','result-map':'maps',again:'again','result-source':'source','footer-tagline':'footerTagline','footer-data':'footerData','footer-scope':'footerScope','sources-label':'sources','source-ud':'udSource','source-boba':'bobaSource','source-uv':'uvSource'};for(const [id,k]of Object.entries(ids))$(id).textContent=t(k);$('headline').textContent=t(mode==='food'?'foodTitle':'drinkTitle');$('subtitle').textContent=t(mode==='food'?'foodSubtitle':'drinkSubtitle');$('search').placeholder=t('searchPlaceholder');$('language').textContent=language==='en'?'中文':'English';$('language').setAttribute('aria-label',language==='en'?'切换为中文':'Switch to English');$('close-result').setAttribute('aria-label',t('close'));$('mode-tabs').setAttribute('aria-label',t('modeLabel'));$('wheel-card').setAttribute('aria-label',t('wheelAria'));$('filters').setAttribute('aria-label',t('filterAria'));const active=storeDirectory.filter(s=>(s.food||s.drink)&&s.status!=='尚未开业');const ud=active.filter(s=>s.region==='UD').length,uv=active.filter(s=>s.region==='UV').length;$('coverage').textContent=language==='en'?`UD: ${ud} places · UV: ${uv} places · Restaurants & drink spots`:`UD ${ud} 家 · UV ${uv} 家 · 餐厅与饮品店`;$('count').textContent=language==='en'?`${candidates.length} candidates`:`${candidates.length} 家候选`;$('spin').textContent=t(spinning?'busy':mode==='food'?'foodSpin':'drinkSpin');$('spin-status').textContent=spinning?t('spinning'):t('idle');renderFilters();for(const i of $('filters').elements)i.disabled=spinning;renderStores();drawWheel();if(dialog.open&&lastStore)fillResult(lastStore);}
+function renderFilters(){const form=$('filters');form.replaceChildren();for(const g of filterConfig[mode]){const fs=document.createElement('fieldset'),legend=document.createElement('legend'),detail=document.createElement('span'),options=document.createElement('div');legend.append(document.createTextNode(label(g.label)));detail.textContent=language==='en'?t(g.multi?'multiple':'singleChoice'):`${g.english} · ${t(g.multi?'multiple':'singleChoice')}`;legend.append(detail);fs.append(legend);options.className='options';let opts=g.options;if(mode==='food'&&g.key==='cuisine'){const present=new Set(foodStores.flatMap(s=>s.cuisine));opts=opts.filter(o=>present.has(typeof o==='string'?o:o.value));}const values=[...opts.map(o=>typeof o==='string'?{value:o,label:o}:o),{value:'',label:'不限'}],selected=preferences[mode][g.key]||[];for(const o of values){const item=document.createElement('label'),input=document.createElement('input'),text=document.createElement('span');item.className='option';input.type=g.multi?'checkbox':'radio';input.name=g.key;input.value=o.value;input.checked=o.value?selected.includes(o.value):!selected.length;text.textContent=label(o.label);item.append(input,text);options.append(item);}fs.append(options);form.append(fs);}}
+$('filters').addEventListener('change',e=>{if(spinning||!(e.target instanceof HTMLInputElement))return;const input=e.target,g=filterConfig[mode].find(i=>i.key===input.name);if(!g)return;if(!input.value)preferences[mode][g.key]=[];else if(g.multi){const selected=new Set(preferences[mode][g.key]||[]);if(input.checked)selected.add(input.value);else selected.delete(input.value);preferences[mode][g.key]=[...selected];}else preferences[mode][g.key]=[input.value];const selected=preferences[mode][g.key]||[];for(const i of $('filters').elements)if(i instanceof HTMLInputElement&&i.name===g.key)i.checked=i.value?selected.includes(i.value):!selected.length;updateCandidates();});
+$('filters').addEventListener('submit',e=>e.preventDefault());
+function updateCandidates(){const source=mode==='food'?foodStores:drinkStores;candidates=source.filter(s=>(s.status!=='尚未开业'||(preferences[mode].status||[]).includes('尚未开业'))&&filterConfig[mode].every(g=>{const selected=preferences[mode][g.key]||[];return !selected.length||selected.some(v=>asArray(s[g.key]).includes(v));}));rotation=0;$('count').textContent=language==='en'?`${candidates.length} candidates`:`${candidates.length} 家候选`;$('empty').hidden=candidates.length>0;$('spin').disabled=!candidates.length;$('spin-status').textContent=t('idle');renderStores();drawWheel();}
+function renderStores(){const list=$('store-list');list.replaceChildren();const query=$('search').value.trim().toLowerCase();let visible=0;candidates.forEach((s,index)=>{if(query&&!`${s.name} ${s.address}`.toLowerCase().includes(query))return;visible++;const li=document.createElement('li'),content=document.createElement('div'),link=document.createElement('a'),details=document.createElement('small'),addr=document.createElement('small'),source=document.createElement('a');li.className='store';content.className='store-content';link.textContent=displayName(s);link.href=mapsURL(s);link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label',`${displayName(s)} · Google Maps`);details.textContent=meta(s);addr.textContent=address(s);source.className='source';source.href=s.source;source.target='_blank';source.rel='noopener noreferrer';source.textContent=s.status==='目录收录'?t('source'):`${label(s.status)} · ${t('source')}`;content.append(link,details,addr,source);li.append(content);list.append(li);});$('list-count').textContent=language==='en'?`Showing ${visible} / ${candidates.length}`:`显示 ${visible} / ${candidates.length} 家`;$('list-empty').hidden=visible>0;$('list-empty').textContent=t(candidates.length?'noSearch':'noList');}
+function drawWheel(){const radius=278;ctx.clearRect(0,0,600,600);ctx.save();ctx.translate(300,300);ctx.beginPath();ctx.arc(0,0,radius+10,0,TAU);ctx.fillStyle='#efe9df';ctx.fill();if(!candidates.length){ctx.beginPath();ctx.arc(0,0,radius,0,TAU);ctx.fillStyle='#f3eee6';ctx.fill();ctx.restore();canvas.setAttribute('aria-label',t('empty'));return;}ctx.rotate(rotation);const step=TAU/candidates.length,palette=palettes[mode];candidates.forEach((s,index)=>{const start=-Math.PI/2-step/2+index*step;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,radius,start,start+step);ctx.closePath();ctx.fillStyle=palette[index%palette.length];ctx.fill();ctx.strokeStyle='#fffefa';ctx.lineWidth=2;ctx.stroke();});ctx.restore();canvas.setAttribute('aria-label',language==='en'?`Unlabeled wheel with ${candidates.length} equal sectors`:`无文字转盘，共 ${candidates.length} 个等分扇区`);}
+function setMode(next){if(spinning||next===mode)return;mode=next;lastStore=null;$('search').value='';document.body.dataset.mode=mode;for(const tab of tabs){const active=tab.dataset.mode===mode;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;}$('panel').setAttribute('aria-labelledby',`tab-${mode}`);$('hub-icon').textContent=mode==='food'?'🍜':'🧋';renderFilters();updateCandidates();applyLanguage();}
+tabs.forEach(tab=>{tab.addEventListener('click',()=>setMode(tab.dataset.mode));tab.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)||spinning)return;e.preventDefault();const index=tabs.indexOf(tab),next=e.key==='Home'?tabs[0]:e.key==='End'?tabs.at(-1):tabs[mod(index+(e.key==='ArrowRight'?1:-1),tabs.length)];setMode(next.dataset.mode);next.focus();});});
+$('language').addEventListener('click',()=>{language=language==='en'?'zh':'en';try{localStorage.setItem('mc3k-language',language);}catch{}applyLanguage();});
+$('reset').addEventListener('click',()=>{if(spinning)return;preferences[mode]={};$('search').value='';renderFilters();updateCandidates();});
+function setBusy(busy){spinning=busy;$('panel').setAttribute('aria-busy',String(busy));$('spin').disabled=busy||!candidates.length;$('reset').disabled=busy;tabs.forEach(t=>t.disabled=busy);[...$('filters').elements].forEach(i=>i.disabled=busy);$('spin').textContent=t(busy?'busy':mode==='food'?'foodSpin':'drinkSpin');}
 function randomIndex(length){if(length<=1)return 0;if(!globalThis.crypto?.getRandomValues)return Math.floor(Math.random()*length);const b=new Uint32Array(1),limit=Math.floor(4294967296/length)*length;do{crypto.getRandomValues(b);}while(b[0]>=limit);return b[0]%length;}
-function spin(excludeLast=false){if(spinning||!candidates.length)return;const pool=candidates.map((store,index)=>({store,index})).filter(i=>!excludeLast||candidates.length===1||i.store!==lastStore),choice=pool[randomIndex(pool.length)],step=TAU/candidates.length,start=mod(rotation,TAU),destination=mod(-choice.index*step,TAU),travel=6*TAU+mod(destination-start,TAU),duration=matchMedia("(prefers-reduced-motion: reduce)").matches?0:4400;setBusy(true);$("spin-status").textContent="正在抽签，等转盘慢慢停下来…";let startTime;function frame(now){if(startTime===undefined)startTime=now;const progress=duration===0?1:Math.min((now-startTime)/duration,1),eased=1-Math.pow(1-progress,4);rotation=start+travel*eased;drawWheel();if(progress<1)requestAnimationFrame(frame);else{rotation=destination;drawWheel();lastStore=choice.store;setBusy(false);$("spin-status").textContent=`已抽中：${choice.store.name}`;showResult(choice.store);}}requestAnimationFrame(frame);}
-function showResult(s){$("result-icon").textContent=mode==="food"?"🍜":"🧋";$("result-kicker").textContent=mode==="food"?"今天就吃：":"今天就喝：";$("result-name").textContent=s.name;$("result-note").textContent=s.note;$("result-map").href=mapsURL(s);$("result-address").textContent=s.address||(s.region==="UV"?"University Village 商场内":"地址待核实 · U-District");$("result-source").href=s.source;$("result-meta").textContent=mode==="food"?`${asArray(s.cuisine).join(" / ")} · ${s.budget} · ${s.region==="UD"?"U-District":"University Village"}`:`${asArray(s.type).join(" / ")} · ${s.region==="UD"?"U-District":"University Village"}`;$("reroll-hint").textContent=candidates.length>1?"再抽一次会避开这家，其余候选等概率。":"目前只有这一家候选，放宽筛选可以发现更多选择。";$("again").disabled=candidates.length<2;dialog.showModal();}
-$("spin").addEventListener("click",()=>spin());$("close-result").addEventListener("click",()=>dialog.close());$("again").addEventListener("click",()=>{if(candidates.length<2)return;dialog.close();spin(true);});dialog.addEventListener("click",e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});dialog.addEventListener("close",()=>{if(!spinning)$("spin").focus();});$("search").addEventListener("input",renderStores);
-const active=storeDirectory.filter(s=>s.status!=="尚未开业");$("coverage").textContent=`UD ${active.filter(s=>s.region==="UD").length} 家 · UV ${active.filter(s=>s.region==="UV").length} 家 · 餐厅、咖啡馆、茶饮与甜品`;
-renderFilters();updateCandidates();
+function spin(excludeLast=false){if(spinning||!candidates.length)return;const pool=candidates.map((store,index)=>({store,index})).filter(i=>!excludeLast||candidates.length===1||i.store!==lastStore),choice=pool[randomIndex(pool.length)],step=TAU/candidates.length,start=mod(rotation,TAU),destination=mod(-choice.index*step,TAU),travel=6*TAU+mod(destination-start,TAU),duration=matchMedia('(prefers-reduced-motion: reduce)').matches?0:4400;setBusy(true);$('spin-status').textContent=t('spinning');let startTime;function frame(now){if(startTime===undefined)startTime=now;const progress=duration===0?1:Math.min((now-startTime)/duration,1),eased=1-Math.pow(1-progress,4);rotation=start+travel*eased;drawWheel();if(progress<1)requestAnimationFrame(frame);else{rotation=destination;drawWheel();lastStore=choice.store;setBusy(false);$('spin-status').textContent=t('selected')+displayName(choice.store);showResult(choice.store);}}requestAnimationFrame(frame);}
+function fillResult(s){$('result-icon').textContent=mode==='food'?'🍜':'🧋';$('result-kicker').textContent=t(mode==='food'?'foodResult':'drinkResult');$('result-name').textContent=displayName(s);$('result-note').textContent=language==='zh'?s.note:`Menu: ${asArray(mode==='food'?s.cuisine:s.type).map(label).join(' / ')}. Open the store information for current menu and recommendations.${s.type.includes('精酿/酒吧（21+）')?' Alcohol is for ages 21+ only.':''}`;$('result-map').href=mapsURL(s);$('result-address').textContent=address(s);$('result-source').href=s.source;$('result-meta').textContent=meta(s);$('reroll-hint').textContent=t(candidates.length>1?'reroll':'single');$('again').disabled=candidates.length<2;}
+function showResult(s){fillResult(s);dialog.showModal();}
+$('spin').addEventListener('click',()=>spin());$('close-result').addEventListener('click',()=>dialog.close());$('again').addEventListener('click',()=>{if(candidates.length<2)return;dialog.close();spin(true);});dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});dialog.addEventListener('close',()=>{if(!spinning)$('spin').focus();});$('search').addEventListener('input',renderStores);
+renderFilters();updateCandidates();applyLanguage();
+
 </script></body></html>
