@@ -16,7 +16,7 @@
 <header class="topbar"><div class="brand" id="brand">今天<span>吃喝</span>什么？</div><div class="header-right"><div class="place">UW · UD + UV · SEATTLE</div><button id="language" class="language-button" type="button" aria-label="Switch to English">English</button></div></header>
 <main><section class="hero"><div class="eyebrow">A LITTLE SPIN, A HAPPY DAY</div><div class="creator-signature">Made by MC3K</div><h1 id="headline">今天吃什么？</h1><p class="hint" id="coverage"></p><p id="subtitle">把纠结交给转盘，把胃留给好吃的。</p><div id="mode-tabs" class="tabs" role="tablist" aria-label="选择吃喝模式"><button class="tab" id="tab-food" role="tab" aria-selected="true" aria-controls="panel" tabindex="0" data-mode="food">🍜 今天吃什么</button><button class="tab" id="tab-drink" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-mode="drink">🧋 今天喝什么</button></div></section>
 <section id="panel" role="tabpanel" aria-labelledby="tab-food"><div class="layout"><section id="wheel-card" class="card wheel-card" aria-label="随机抽签转盘"><div class="card-top"><span id="wheel-label" class="section-label">今日的灵感，转出来</span><span id="count" class="badge" role="status" aria-live="polite"></span></div><div class="wheel-stage"><div class="pointer" aria-hidden="true"></div><canvas id="wheel" width="600" height="600" role="img" aria-label="无文字随机抽签转盘">候选店铺见下方列表。</canvas><div class="hub" aria-hidden="true"><div class="hub-icon" id="hub-icon">🍜</div><small>LET'S GO</small></div></div><button id="spin" class="primary">转一下，开饭！ ↗</button><p id="spin-status" class="hint" role="status" aria-live="polite">每家候选店等概率 · 转盘编号对应下方列表</p><p id="empty" class="empty" role="status" hidden>没有找到匹配的店铺，试试放宽条件吧！</p></section><section class="card" aria-labelledby="filter-title"><div class="filter-heading"><h2 id="filter-title">先选一点偏好</h2><button id="reset" class="text-button">重置筛选 ↺</button></div><p id="filter-description" class="filter-description">多选条件组内满足任一项即可，组与组之间需同时满足。</p><form id="filters" aria-label="筛选店铺"></form></section></div><section class="card candidates" aria-labelledby="candidate-title"><div class="candidate-heading"><h2 id="candidate-title">今天的候选清单</h2><small id="list-count">点击店名，在地图上看看 ↗</small></div><label id="search-label" class="search-label" for="search">搜索候选店铺</label><input id="search" type="search" placeholder="搜索店名或地址…"><ol id="store-list" class="store-list"></ol><p id="list-empty" class="hint" hidden>放宽筛选，让更多好店加入转盘。</p></section></section></main>
-<footer><p id="footer-tagline"></p><p id="footer-data"></p><p id="footer-scope"></p><p><span id="sources-label"></span><a id="source-ud" href="https://udistrictseattle.com/business-category/food-drink" target="_blank" rel="noopener noreferrer"></a><a id="source-boba" href="https://udistrictseattle.com/bobafest/menu" target="_blank" rel="noopener noreferrer"></a><a id="source-uv" href="https://uvillage.com/directory/" target="_blank" rel="noopener noreferrer"></a></p><p class="credit">Made by MC3K</p></footer></div>
+<footer><p id="footer-tagline"></p><p id="footer-data"></p><p id="footer-scope"></p><p><span id="sources-label"></span><a id="source-google" href="https://www.google.com/maps/search/restaurants+University+District+Seattle" target="_blank" rel="noopener noreferrer">Google Maps</a><a id="source-yelp" href="https://www.yelp.com/search?find_desc=Restaurants&amp;find_loc=University+District%2C+Seattle%2C+WA" target="_blank" rel="noopener noreferrer">Yelp</a></p><p class="credit">Made by MC3K</p></footer></div>
 <dialog id="result" aria-labelledby="result-name" aria-describedby="result-note"><button id="close-result" class="close" aria-label="关闭结果弹窗" autofocus>×</button><div id="result-icon" class="result-icon" aria-hidden="true">🍜</div><p id="result-kicker" class="result-kicker">今天就吃：</p><h2 id="result-name"></h2><p id="result-meta"></p><p class="directory-note" id="result-address"></p><a id="result-source" target="_blank" rel="noopener noreferrer">查看门店信息 ↗</a><div class="recommendation"><small id="recommendation-label">招牌 / 点单灵感</small><p id="result-note"></p></div><div class="result-actions"><a id="result-map" class="primary" target="_blank" rel="noopener noreferrer">Google Maps 看位置 ↗</a><button id="again" class="secondary">换一个 / 再抽一次 ↻</button></div><p id="reroll-hint" class="hint"></p></dialog>
 <script>
 "use strict";
@@ -24,47 +24,55 @@
 // 名单核对日期：2026-10-12。公开目录不保证实时完整。
 const storeDirectory = [
   {
-    "id": "UD-apizzamart",
-    "name": "A-Pizza Mart",
+    "id": "UD-tasteofxian",
+    "name": "Taste of Xi’an",
     "region": "UD",
-    "address": "5240 University Way Ne",
-    "source": "https://udistrictseattle.com/business/a-pizza-mart",
-    "status": "目录收录",
+    "address": "4523 University Way NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Taste+of+Xi%E2%80%99an+4523+University+Way+NE%2C+Seattle%2C+WA&query_place_id=ChIJVVWF7ooUkFQRtdshBrxhPUQ",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
-      "意餐/披萨"
+      "中餐"
     ],
     "type": [
       "其他饮品/待核实"
     ],
     "flavor": [
-      "待核实"
+      "重辣/麻辣",
+      "酸辣/开胃"
     ],
-    "budget": "待核实",
+    "budget": "$$",
     "temp": [
       "待核实"
     ],
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJVVWF7ooUkFQRtdshBrxhPUQ",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Taste+of+Xi%E2%80%99an+4523+University+Way+NE%2C+Seattle%2C+WA&query_place_id=ChIJVVWF7ooUkFQRtdshBrxhPUQ",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Taste+of+Xi%E2%80%99an&find_loc=4523+University+Way+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-aguaverdecafe",
-    "name": "Agua Verde Cafe",
+    "id": "UD-slurpstationaburasoba",
+    "name": "Slurp Station Aburasoba",
     "region": "UD",
-    "address": "1303 NE Boat Street",
-    "source": "https://udistrictseattle.com/business/aguaverdecafe",
-    "status": "目录收录",
+    "address": "4701 Brooklyn Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Slurp+Station+Aburasoba+4701+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJsUpT5EQVkFQRE81m7ge-d4A",
+    "status": "地图已核对",
     "food": true,
     "drink": true,
     "cuisine": [
-      "墨西哥/拉美"
+      "日韩"
     ],
     "type": [
-      "精酿/酒吧（21+）"
+      "水果茶/特调",
+      "抹茶/特饮"
     ],
     "flavor": [
       "待核实"
@@ -76,24 +84,28 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJsUpT5EQVkFQRE81m7ge-d4A",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Slurp+Station+Aburasoba+4701+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJsUpT5EQVkFQRE81m7ge-d4A",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Slurp+Station+Aburasoba&find_loc=4701+Brooklyn+Ave+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-aladdincharburger",
-    "name": "Aladdin CharBurger",
-    "region": "UD",
-    "address": "4135 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/aladdincharburger",
-    "status": "目录收录",
+    "id": "UV-joeykitchen",
+    "name": "JOEY University Village",
+    "region": "UV",
+    "address": "2603 NE 46th St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=JOEY+University+Village+2603+NE+46th+St%2C+Seattle%2C+WA&query_place_id=ChIJD5DyOI8UkFQR7zCbOa_IwIg",
+    "status": "地图已核对",
     "food": true,
-    "drink": false,
+    "drink": true,
     "cuisine": [
       "美式/快餐"
     ],
     "type": [
-      "其他饮品/待核实"
+      "精酿/酒吧（21+）"
     ],
     "flavor": [
       "待核实"
@@ -105,76 +117,25 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJD5DyOI8UkFQR7zCbOa_IwIg",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=JOEY+University+Village+2603+NE+46th+St%2C+Seattle%2C+WA&query_place_id=ChIJD5DyOI8UkFQR7zCbOa_IwIg",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=JOEY+University+Village&find_loc=2603+NE+46th+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-aladdinfalafelcorner",
-    "name": "Aladdin Falafel Corner",
+    "id": "UD-shultzysbargrill",
+    "name": "Shultzy's Bar & Grill",
     "region": "UD",
-    "address": "4541 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/aladdin-falafel-corner",
-    "status": "目录收录",
+    "address": "4114 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Shultzy%27s+Bar+%26+Grill+4114+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJG_j0afMUkFQROPWTaerWo9E",
+    "status": "地图已核对",
     "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-aladdinsgyrocery",
-    "name": "Aladdin's Gyro-cery",
-    "region": "UD",
-    "address": "4139 University Way NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/aladdin-gyro-cery",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-alleycatlounge",
-    "name": "Alley Cat Lounge",
-    "region": "UD",
-    "address": "1312 NE 43rd St",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
     "drink": true,
     "cuisine": [
-      "其他/待核实"
+      "美式/快餐"
     ],
     "type": [
       "精酿/酒吧（21+）"
@@ -189,21 +150,26 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
     "eventListed": true,
-    "location": "UD"
+    "location": "UD",
+    "googlePlaceId": "ChIJG_j0afMUkFQROPWTaerWo9E",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shultzy%27s+Bar+%26+Grill+4114+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJG_j0afMUkFQROPWTaerWo9E",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Shultzy%27s+Bar+%26+Grill&find_loc=4114+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-amazingthaicuisine",
-    "name": "Amazing Thai Cuisine",
+    "id": "UD-samirsmediterraneangrill",
+    "name": "Samir's Mediterranean Grill",
     "region": "UD",
-    "address": "5210 Roosevelt Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business/amazing-thai-cuisine",
-    "status": "目录收录",
+    "address": "1316 NE 43rd St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Samir%27s+Mediterranean+Grill+1316+NE+43rd+St%2C+Seattle%2C+WA&query_place_id=ChIJPa1dMosVkFQRefcnZkJRdfU",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
-      "泰餐"
+      "地中海/中东"
     ],
     "type": [
       "其他饮品/待核实"
@@ -218,73 +184,22 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：泰餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-ancientgatecoffee",
-    "name": "Ancient Gate Coffee",
-    "region": "UD",
-    "address": "4530 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
     "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-arayasplace",
-    "name": "Araya's Place",
-    "region": "UD",
-    "address": "5240 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/arayas-place",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "泰餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：泰餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "location": "UD",
+    "googlePlaceId": "ChIJPa1dMosVkFQRefcnZkJRdfU",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Samir%27s+Mediterranean+Grill+1316+NE+43rd+St%2C+Seattle%2C+WA&query_place_id=ChIJPa1dMosVkFQRefcnZkJRdfU",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Samir%27s+Mediterranean+Grill&find_loc=1316+NE+43rd+St%2C+Seattle%2C+WA"
   },
   {
     "id": "UD-arepavenezuelankitchen",
     "name": "Arepa Venezuelan Kitchen",
     "region": "UD",
-    "address": "4500 9th Ave NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/arepa-venezuelan-kitchen",
-    "status": "目录收录",
+    "address": "4500 9th Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Arepa+Venezuelan+Kitchen+4500+9th+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJNZOy6WEUkFQR9kR0EMss9DY",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
@@ -303,363 +218,21 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：墨西哥/拉美。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJNZOy6WEUkFQR9kR0EMss9DY",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Arepa+Venezuelan+Kitchen+4500+9th+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJNZOy6WEUkFQR9kR0EMss9DY",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Arepa+Venezuelan+Kitchen&find_loc=4500+9th+Ave+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-avoleontheave",
-    "name": "Avole on the Ave",
+    "id": "UD-aladdincharburger",
+    "name": "Aladdin CharBurger",
     "region": "UD",
-    "address": "4555 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-basilvietkitchen",
-    "name": "Basil Viet Kitchen",
-    "region": "UD",
-    "address": "4002 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/basil-viet-kitchen",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "越餐/东南亚",
-      "泰餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：越餐/东南亚 / 泰餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-bbsteriyaki",
-    "name": "BB's Teriyaki",
-    "region": "UD",
-    "address": "4221 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/bbs-teriyaki",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-bigtimebreweryalehouse",
-    "name": "Big Time Brewery & Alehouse",
-    "region": "UD",
-    "address": "4133 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/big-time-brewery-alehouse",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-birrieriapepeeltoro",
-    "name": "Birrieria Pepe El Toro",
-    "region": "UD",
-    "address": "5628 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "墨西哥/拉美"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：墨西哥/拉美。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-biteandbento",
-    "name": "Bite and Bento",
-    "region": "UD",
-    "address": "4241 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "清淡/温和",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：日式便当、鸡排咖喱。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-bitetheorybynikfoods",
-    "name": "Bite Theory by Nikfoods",
-    "region": "UD",
-    "address": "4738 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "印度/南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：印度/南亚。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-bluemoontavern",
-    "name": "Blue Moon Tavern",
-    "region": "UD",
-    "address": "712 NE 45th St, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/blue-moon-tavern",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-bobaup",
-    "name": "Boba Up",
-    "region": "UD",
-    "address": "4141 University Way NE, Suite 103, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/boba-up",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "自助奶茶和加料；可以体验不同口味组合。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-bobalust",
-    "name": "BobaLust",
-    "region": "UD",
-    "address": "4553 University Way NE | cite19†@bobalust†www.instagram.com",
-    "source": "https://udistrictseattle.com/bobafest/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：水果风味茶饮与特色加料。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-boonboonacoffee",
-    "name": "Boon Boona Coffee",
-    "region": "UD",
-    "address": "4326 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/boonboonacoffee",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-bulldognewscafe",
-    "name": "Bulldog News & Café",
-    "region": "UD",
-    "address": "4208 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/bulldog_news",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-burgerkabobhut",
-    "name": "Burger & Kabob Hut",
-    "region": "UD",
-    "address": "4142 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/burger-and-kabob-hut",
-    "status": "目录收录",
+    "address": "4135 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Aladdin+CharBurger+4135+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJFaWUKRsVkFQRYk7AfxyUDlM",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
@@ -678,75 +251,21 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-cafeallegro",
-    "name": "Cafe Allegro",
-    "region": "UD",
-    "address": "Alleyway, 4214 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/cafe-allegro",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙",
-      "热饮/温热"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：美式、拿铁；不加糖的咖啡也很适合。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-cafehappy",
-    "name": "Cafe Happy",
-    "region": "UD",
-    "address": "1408 NE 40th St",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "沙拉/素食"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "菜单方向：素食小食、奶茶。请查看门店最新菜单。",
-    "eventListed": true,
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJFaWUKRsVkFQRYk7AfxyUDlM",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aladdin+CharBurger+4135+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJFaWUKRsVkFQRYk7AfxyUDlM",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Aladdin+CharBurger&find_loc=4135+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
     "id": "UD-cafeontheave",
     "name": "Cafe on the Ave",
     "region": "UD",
-    "address": "4201 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/cafe-on-the-ave",
-    "status": "目录收录",
+    "address": "4201 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Cafe+on+the+Ave+4201+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJbV44pvQUkFQRBuSZQ_SrifQ",
+    "status": "地图已核对",
     "food": true,
     "drink": true,
     "cuisine": [
@@ -767,910 +286,57 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "点单灵感：韩式鸡肉、炒年糕。",
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
     "eventListed": true,
-    "location": "UD"
+    "location": "UD",
+    "googlePlaceId": "ChIJbV44pvQUkFQRBuSZQ_SrifQ",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+on+the+Ave+4201+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJbV44pvQUkFQRBuSZQ_SrifQ",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Cafe+on+the+Ave&find_loc=4201+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-cafesolstice",
-    "name": "Cafe Solstice",
+    "id": "UD-sizzlecrunch",
+    "name": "Sizzle & Crunch",
     "region": "UD",
-    "address": "4116 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/cafe-solstice",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-callachicken",
-    "name": "Call a Chicken",
-    "region": "UD",
-    "address": "4237 University Way NE",
-    "source": "https://udistrictseattle.com/business/callachicken",
-    "status": "目录收录",
+    "address": "1313 NE 42nd St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Sizzle+%26+Crunch+1313+NE+42nd+St%2C+Seattle%2C+WA&query_place_id=ChIJ98C7oPQUkFQR-RlbvbijjIs",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-cedarsoflebanon",
-    "name": "Cedars of Lebanon",
-    "region": "UD",
-    "address": "1319 NE 43rd St",
-    "source": "https://udistrictseattle.com/business/cedars-of-lebanon",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-cedarsrestaurant",
-    "name": "Cedars Restaurant",
-    "region": "UD",
-    "address": "4759 Brooklyn Ave NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/cedars-restaurant",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "印度/南亚",
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：印度/南亚 / 地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-chayan",
-    "name": "Chayan",
-    "region": "UD",
-    "address": "4105 Brooklyn Ave NE Ste 103A",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "抹茶/特饮"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：茶拿铁、抹茶风味饮品。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-chebahuttoastedsubs",
-    "name": "Cheba Hut Toasted Subs",
-    "region": "UD",
-    "address": "4730 University Way NE STE 108, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/chebahut",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-chilissouthindiancuisine",
-    "name": "Chili's South Indian Cuisine",
-    "region": "UD",
-    "address": "4220 University Way NE",
-    "source": "https://udistrictseattle.com/business/chillis",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "印度/南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：印度/南亚。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-chipotletheave",
-    "name": "Chipotle · The Ave",
-    "region": "UD",
-    "address": "4229 University Way NE",
-    "source": "https://locations.chipotle.com/wa/seattle/4229-university-way-ne",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "墨西哥/拉美"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：墨西哥/拉美。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-cocofreshteajuice",
-    "name": "CoCo Fresh Tea & Juice",
-    "region": "UD",
-    "address": "4700 Brooklyn Ave NE | cite22†@cocobubbleteaseattle†www.instagram.com",
-    "source": "https://udistrictseattle.com/bobafest/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：珍珠奶茶；低糖请选择支持调糖的款式。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-coldplate",
-    "name": "Cold Plate",
-    "region": "UD",
-    "address": "5240 University Wy NE Ste B, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/coldplate",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-costas",
-    "name": "Costas",
-    "region": "UD",
-    "address": "4559 University Way NE",
-    "source": "https://udistrictseattle.com/business/costas",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-dingteaseattle",
-    "name": "Ding Tea Seattle",
-    "region": "UD",
-    "address": "4725 University Way NE",
-    "source": "https://udistrictseattle.com/business/dingteauw",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "菜单方向：奶茶与韩式年糕小食。请查看门店最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-district4cafe",
-    "name": "District 4 Cafe",
-    "region": "UD",
-    "address": "5600 Roosevelt Way NE Seattle WA 98105",
-    "source": "https://udistrictseattle.com/business/district4cafe",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
     "cuisine": [
       "越餐/东南亚"
     ],
     "type": [
-      "现磨咖啡/Espresso",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：越餐/东南亚。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-dominosbrooklynave",
-    "name": "Domino's · Brooklyn Ave",
-    "region": "UD",
-    "address": "4715 Brooklyn Ave NE",
-    "source": "https://pizza.dominos.com/washington/seattle/4715-brooklyn-ave",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
       "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-dontyellatme",
-    "name": "Don't Yell At Me",
-    "region": "UD",
-    "address": "4511 University Way NE",
-    "source": "https://udistrictseattle.com/business/dontyellatme",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：茶香奶茶或清爽果茶。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-donutfactory",
-    "name": "Donut Factory",
-    "region": "UD",
-    "address": "4336 Roosevelt Way NE",
-    "source": "https://udistrictseattle.com/business/donut-factory",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-earlsontheave",
-    "name": "Earl's on the Ave",
-    "region": "UD",
-    "address": "4333 University Way NE",
-    "source": "https://udistrictseattle.com/business/theglide",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-eggstreet",
-    "name": "Egg Street",
-    "region": "UD",
-    "address": "4705 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-elixirdessertbar",
-    "name": "Elixir Dessert + Bar",
-    "region": "UD",
-    "address": "4524 University Way NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/elixir",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-georgecoffeepastries",
-    "name": "George Coffee & Pastries",
-    "region": "UD",
-    "address": "1317 NE 47th St, Seattle, WA. 98105",
-    "source": "https://udistrictseattle.com/business/georgecoffeeco",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-hawaiianbbq",
-    "name": "Hawaiian BBQ",
-    "region": "UD",
-    "address": "4549 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "夏威夷/Poke"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：夏威夷/Poke。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-herkimercoffee",
-    "name": "Herkimer Coffee",
-    "region": "UD",
-    "address": "5611 University Way NE #100c",
-    "source": "https://udistrictseattle.com/business/ravenna",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-hiroshispoke",
-    "name": "Hiroshi's Poke",
-    "region": "UD",
-    "address": "4712 11th Ave NE",
-    "source": "https://udistrictseattle.com/business/hiroshis-poke",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "夏威夷/Poke"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：夏威夷/Poke。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-ijsushiburrito",
-    "name": "IJ SUSHI BURRITO",
-    "region": "UD",
-    "address": "4141 university way ne suite 201",
-    "source": "https://udistrictseattle.com/business/ijsushiburrito",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-itadakimasu",
-    "name": "Itadakimasu",
-    "region": "UD",
-    "address": "4743 Brooklyn Ave NE Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/itadakimasu",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-jaithai",
-    "name": "Jai Thai",
-    "region": "UD",
-    "address": "4214 University Way NE",
-    "source": "https://udistrictseattle.com/business/jai-thai",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "泰餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：泰餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-jewelofindia",
-    "name": "Jewel of India",
-    "region": "UD",
-    "address": "4735 University Way NE",
-    "source": "https://udistrictseattle.com/business/jewelofindia",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "印度/南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：印度/南亚。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-justburgers",
-    "name": "Just Burgers",
-    "region": "UD",
-    "address": "4510 University Way NE, Seattle, WA, USA",
-    "source": "https://udistrictseattle.com/business/just-burgers",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-justpoke",
-    "name": "Just Poké",
-    "region": "UD",
-    "address": "4339 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "夏威夷/Poke"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：夏威夷/Poke。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-kaisthaistreetfoodbar",
-    "name": "Kai's Thai Street Food & Bar",
-    "region": "UD",
-    "address": "1312 NE 43rd St",
-    "source": "https://udistrictseattle.com/business/kais-bistro-lounge",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "泰餐"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
     ],
     "flavor": [
       "酸辣/开胃",
-      "重辣/麻辣",
       "甜/咸"
     ],
-    "budget": "$$",
+    "budget": "$",
     "temp": [
       "待核实"
     ],
     "sweetness": [
       "待核实"
     ],
-    "note": "点单灵感：蒜香鸡、泰式街头小食。 酒精饮品仅限 21 岁及以上。",
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
     "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-kongtofuhouse",
-    "name": "Kong Tofu House",
-    "region": "UD",
-    "address": "1414 NE 42nd St",
-    "source": "https://udistrictseattle.com/business/kong-tofu-house",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "location": "UD",
+    "googlePlaceId": "ChIJ98C7oPQUkFQR-RlbvbijjIs",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sizzle+%26+Crunch+1313+NE+42nd+St%2C+Seattle%2C+WA&query_place_id=ChIJ98C7oPQUkFQR-RlbvbijjIs",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Sizzle+%26+Crunch&find_loc=1313+NE+42nd+St%2C+Seattle%2C+WA"
   },
   {
     "id": "UD-koreantofuhouse",
     "name": "Korean Tofu House",
     "region": "UD",
-    "address": "4142 Brooklyn Ave NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
+    "address": "4142 Brooklyn Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Korean+Tofu+House+4142+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJkQqon_QUkFQR6IATEnUfuK0",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
@@ -1689,20 +355,25 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJkQqon_QUkFQR6IATEnUfuK0",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Korean+Tofu+House+4142+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJkQqon_QUkFQR6IATEnUfuK0",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Korean+Tofu+House&find_loc=4142+Brooklyn+Ave+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-koreantofuhouseexpress",
-    "name": "Korean Tofu House Express",
+    "id": "UD-bitetheorybynikfoods",
+    "name": "Bite Theory by Nikfoods",
     "region": "UD",
-    "address": "4520 University Way NE",
-    "source": "https://udistrictseattle.com/business/koreantofuhouseexpress",
-    "status": "目录收录",
+    "address": "4738 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Bite+Theory+by+Nikfoods+4738+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ-bVxVAAVkFQRqVMPUeonnDM",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
-      "日韩"
+      "印度/南亚"
     ],
     "type": [
       "其他饮品/待核实"
@@ -1717,73 +388,55 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-kusushiandizakaya",
-    "name": "Ku Sushi and Izakaya",
-    "region": "UD",
-    "address": "5210 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-laddlassbrewing",
-    "name": "Ladd & Lass Brewing",
-    "region": "UD",
-    "address": "722 NE 45th St Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/laddandlass",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
     "eventListed": true,
-    "location": "UD"
+    "location": "UD",
+    "googlePlaceId": "ChIJ-bVxVAAVkFQRqVMPUeonnDM",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bite+Theory+by+Nikfoods+4738+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ-bVxVAAVkFQRqVMPUeonnDM",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Bite+Theory+by+Nikfoods&find_loc=4738+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UD-littleduck",
-    "name": "Little Duck",
+    "id": "UD-aladdinsgyrocery",
+    "name": "Aladdin's Gyro-cery",
     "region": "UD",
-    "address": "4100 Roosevelt Way NE #B, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
+    "address": "4139 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Aladdin%27s+Gyro-cery+4139+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJdzZGWfMUkFQRFZ1X8DaZstc",
+    "status": "地图已核对",
+    "food": true,
+    "drink": false,
+    "cuisine": [
+      "地中海/中东"
+    ],
+    "type": [
+      "其他饮品/待核实"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJdzZGWfMUkFQRFZ1X8DaZstc",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aladdin%27s+Gyro-cery+4139+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJdzZGWfMUkFQRFZ1X8DaZstc",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Aladdin%27s+Gyro-cery&find_loc=4139+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-xiannoodlesnorthave",
+    "name": "Xi'an Noodles · North Ave",
+    "region": "UD",
+    "address": "5259 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Xi%27an+Noodles+%C2%B7+North+Ave+5259+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJy_k66WMUkFQRFKOU8VvxWiY",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
@@ -1802,16 +455,157 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJy_k66WMUkFQRFKOU8VvxWiY",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Xi%27an+Noodles+%C2%B7+North+Ave+5259+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJy_k66WMUkFQRFKOU8VvxWiY",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Xi%27an+Noodles+%C2%B7+North+Ave&find_loc=5259+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-eggstreet",
+    "name": "Egg Street",
+    "region": "UD",
+    "address": "4507 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Egg+Street+4507+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJX2pcc6YVkFQRGaWFBdqr4v8",
+    "status": "地图已核对",
+    "food": true,
+    "drink": false,
+    "cuisine": [
+      "日韩"
+    ],
+    "type": [
+      "其他饮品/待核实"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJX2pcc6YVkFQRGaWFBdqr4v8",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Egg+Street+4507+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJX2pcc6YVkFQRGaWFBdqr4v8",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Egg+Street&find_loc=4507+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-bigtimebreweryalehouse",
+    "name": "Big Time Brewery & Alehouse",
+    "region": "UD",
+    "address": "4133 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Big+Time+Brewery+%26+Alehouse+4133+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJKaC2QvMUkFQRWVvn71SBmuY",
+    "status": "地图已核对",
+    "food": true,
+    "drink": true,
+    "cuisine": [
+      "美式/快餐"
+    ],
+    "type": [
+      "精酿/酒吧（21+）"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJKaC2QvMUkFQRWVvn71SBmuY",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Big+Time+Brewery+%26+Alehouse+4133+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJKaC2QvMUkFQRWVvn71SBmuY",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Big+Time+Brewery+%26+Alehouse&find_loc=4133+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-udupbop",
+    "name": "U DupBop",
+    "region": "UD",
+    "address": "4124 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=U+DupBop+4124+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJfaVRNqMVkFQRHDeifp9uxKU",
+    "status": "地图已核对",
+    "food": true,
+    "drink": false,
+    "cuisine": [
+      "日韩"
+    ],
+    "type": [
+      "其他饮品/待核实"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJfaVRNqMVkFQRHDeifp9uxKU",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=U+DupBop+4124+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJfaVRNqMVkFQRHDeifp9uxKU",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=U+DupBop&find_loc=4124+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UV-babar",
+    "name": "Ba Bar",
+    "region": "UV",
+    "address": "2685 NE 46th St #2503, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Ba+Bar+2685+NE+46th+St+%232503%2C+Seattle%2C+WA&query_place_id=ChIJ-zfeXY8UkFQRnaZKtrG60go",
+    "status": "地图已核对",
+    "food": true,
+    "drink": true,
+    "cuisine": [
+      "越餐/东南亚"
+    ],
+    "type": [
+      "精酿/酒吧（21+）"
+    ],
+    "flavor": [
+      "清淡/温和",
+      "酸辣/开胃"
+    ],
+    "budget": "$$",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJ-zfeXY8UkFQRnaZKtrG60go",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ba+Bar+2685+NE+46th+St+%232503%2C+Seattle%2C+WA&query_place_id=ChIJ-zfeXY8UkFQRnaZKtrG60go",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Ba+Bar&find_loc=2685+NE+46th+St+%232503%2C+Seattle%2C+WA"
   },
   {
     "id": "UD-littlethai",
     "name": "Little Thai",
     "region": "UD",
-    "address": "4142 Brooklyn Ave NE",
-    "source": "https://udistrictseattle.com/business/little-thai",
-    "status": "目录收录",
+    "address": "4142 Brooklyn Ave NE #105, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Little+Thai+4142+Brooklyn+Ave+NE+%23105%2C+Seattle%2C+WA&query_place_id=ChIJkQqon_QUkFQRrw8vixeqiVw",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
@@ -1831,2327 +625,22 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "点单灵感：泰式炒河粉、咖喱配饭。",
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
     "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-lunecafe",
-    "name": "Lune Cafe",
-    "region": "UD",
-    "address": "5000 University Way NE Ste E",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-macuteauw",
-    "name": "Macu Tea UW",
-    "region": "UD",
-    "address": "1100 NE 45th St, Ste 100, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/macu-tea",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "水果茶/特调",
-      "抹茶/特饮"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：水果冰饮；果泥和配料可能自带甜度。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-managerspizza",
-    "name": "Manager's Pizza",
-    "region": "UD",
-    "address": "4741 12th Ave NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-masterbingfirebiteburger",
-    "name": "Master Bing / Firebite Burger",
-    "region": "UD",
-    "address": "4537A University Way NE",
-    "source": "https://udistrictseattle.com/business/masterjianbing",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-meesumpastry",
-    "name": "Mee Sum Pastry",
-    "region": "UD",
-    "address": "4343 University Way NE",
-    "source": "https://udistrictseattle.com/business/mee-sum-pastry",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-meimeicafe",
-    "name": "Mei Mei Cafe",
-    "region": "UD",
-    "address": "1004 NE 50th St, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/meimeicafe",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-midnightbagels",
-    "name": "Midnight Bagels",
-    "region": "UD",
-    "address": "1410 NE 40th St",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-minasmatcha",
-    "name": "Mina's Matcha",
-    "region": "UD",
-    "address": "5200 Roosevelt Way NE Suite A",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "抹茶/特饮"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：抹茶拿铁与风味抹茶特饮。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-modpizza",
-    "name": "MOD Pizza",
-    "region": "UD",
-    "address": "1414 NE 42nd St #103B, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-monkeypub",
-    "name": "Monkey Pub",
-    "region": "UD",
-    "address": "5305 Roosevelt Way NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/monkey-pub",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-morsel",
-    "name": "Morsel",
-    "region": "UD",
-    "address": "5000 University Way NE Suite D",
-    "source": "https://udistrictseattle.com/business/morsel",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-mountaineeringclub",
-    "name": "Mountaineering Club",
-    "region": "UD",
-    "address": "4507 Brooklyn Ave NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-mrlusseafoodandburgers",
-    "name": "Mr. Lu's Seafood and Burgers",
-    "region": "UD",
-    "address": "4752 University Way NE SEATTLE WA 98105",
-    "source": "https://udistrictseattle.com/business/mrluseafood",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-muddywaterscoffeecompany",
-    "name": "Muddy Waters Coffee Company",
-    "region": "UD",
-    "address": "1116 NE 47th St",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-nasaiteriyaki",
-    "name": "Nasai Teriyaki",
-    "region": "UD",
-    "address": "4305 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "清淡/温和",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：照烧鸡肉饭、煎饺。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-nomnomsando",
-    "name": "Nom Nom Sando",
-    "region": "UD",
-    "address": "4744 University Way NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/nomnomsando",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-nuodleexpress",
-    "name": "NUODLE EXPRESS",
-    "region": "UD",
-    "address": "",
-    "source": "https://udistrictseattle.com/business/nuodleexpress",
-    "status": "资料待核实",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-offtherezcafe",
-    "name": "Off the Rez Cafe",
-    "region": "UD",
-    "address": "4303 Memorial Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：原住民风味炸面包；在 Burke Museum 附近。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-ohbearcafeteahousepudgypho",
-    "name": "OH! Bear Cafe & TeaHouse / Pudgy Pho",
-    "region": "UD",
-    "address": "4708 11th Ave NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "越餐/东南亚"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：越餐/东南亚。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-pandanoodlebar",
-    "name": "Panda Noodle Bar",
-    "region": "UD",
-    "address": "4508 University Way NE",
-    "source": "https://udistrictseattle.com/business/pandanoodlebar",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-pandayogurt",
-    "name": "Panda Yogurt",
-    "region": "UD",
-    "address": "4237 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "酸奶/奶昔"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：酸奶/奶昔。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-persepolisgrill",
-    "name": "Persepolis Grill",
-    "region": "UD",
-    "address": "5517 University Way NE",
-    "source": "https://udistrictseattle.com/business/persepolis-grill",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-phoshizzle",
-    "name": "PhoShizzle",
-    "region": "UD",
-    "address": "4235 University Way NE",
-    "source": "https://udistrictseattle.com/business/phoshizzle",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "越餐/东南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：越餐/东南亚。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-piveganpizzeria",
-    "name": "Pi Vegan Pizzeria",
-    "region": "UD",
-    "address": "5301 Roosevelt Way NE, Seattle WA 98105",
-    "source": "https://udistrictseattle.com/business/piveganpizzeria",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-poindextercoffee",
-    "name": "Poindexter Coffee",
-    "region": "UD",
-    "address": "4507 Brooklyn Ave NE NW, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/poindexter-coffee",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-portagebaycafe",
-    "name": "Portage Bay Cafe",
-    "region": "UD",
-    "address": "4130 Roosevelt Way NE",
-    "source": "https://udistrictseattle.com/business/portage-bay-cafe",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-raisingcanes",
-    "name": "Raising Cane's",
-    "region": "UD",
-    "address": "4345 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "甜/咸"
-    ],
-    "budget": "$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：炸鸡柳、吐司和蘸酱。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-redpepper",
-    "name": "Red Pepper",
-    "region": "UD",
-    "address": "4545 university way NE",
-    "source": "https://udistrictseattle.com/business/redpepper",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "重辣/麻辣",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：辣味鸡块、炒饭。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-romaristorante",
-    "name": "Roma Ristorante",
-    "region": "UD",
-    "address": "1405 NE 50th St",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-saigondeli",
-    "name": "Saigon Deli",
-    "region": "UD",
-    "address": "4142 Brooklyn Ave NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/saigondeli",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "越餐/东南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "清淡/温和",
-      "酸辣/开胃"
-    ],
-    "budget": "$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：越式法棍，适合赶课时带走。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-saintbread",
-    "name": "Saint Bread",
-    "region": "UD",
-    "address": "1421 Northeast Boat Street",
-    "source": "https://udistrictseattle.com/business/saintbread",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-samirsmediterraneangrill",
-    "name": "Samir's Mediterranean Grill",
-    "region": "UD",
-    "address": "1316 NE 43rd St",
-    "source": "https://udistrictseattle.com/business/samirs-mediterranean-grill",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-scorpiocafe",
-    "name": "Scorpio Cafe",
-    "region": "UD",
-    "address": "4754 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-seattlebestteauw",
-    "name": "Seattle Best Tea · UW",
-    "region": "UD",
-    "address": "4505 University Way NE Seattle WA 98105",
-    "source": "https://udistrictseattle.com/business/uw-seattle-best-tea",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：乌龙或茉莉茶底奶茶。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-shakestackburgers",
-    "name": "Shake & Stack Burgers",
-    "region": "UD",
-    "address": "4106 Brooklyn Ave NE STE 101A",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "酸奶/奶昔"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-shareteauw",
-    "name": "Sharetea (歇脚亭) · UW",
-    "region": "UD",
-    "address": "4730 University Way NE, Suite 109",
-    "source": "https://www.1992sharetea.com/usa-old",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：波霸奶茶/鲜奶茶 / 水果茶/特调。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-shawarmakingnorthave",
-    "name": "Shawarma King - North Ave",
-    "region": "UD",
-    "address": "5241 University Way NE",
-    "source": "https://udistrictseattle.com/business/shawarma-king",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-shawarmakingsouthave",
-    "name": "Shawarma King - South Ave",
-    "region": "UD",
-    "address": "4337 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-shultzysbargrill",
-    "name": "Shultzy's Bar & Grill",
-    "region": "UD",
-    "address": "4114 University Way NE",
-    "source": "https://udistrictseattle.com/business/shultzys",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-sinnerspizza",
-    "name": "Sinners Pizza",
-    "region": "UD",
-    "address": "4529 University Wy NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-siphouse",
-    "name": "Sip House",
-    "region": "UD",
-    "address": "5001 Brooklyn Ave NE Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/siphouse",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso",
-      "抹茶/特饮"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙",
-      "热饮/温热"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖",
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：越南风味咖啡、抹茶饮品；甜度取决于具体款式。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-sizzlecrunch",
-    "name": "Sizzle & Crunch",
-    "region": "UD",
-    "address": "1313 NE 42nd St, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business/sizzle-and-crunch",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "越餐/东南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "酸辣/开胃",
-      "甜/咸"
-    ],
-    "budget": "$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：越式饭碗、春卷。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-slurpstationaburasoba",
-    "name": "Slurp Station Aburasoba",
-    "region": "UD",
-    "address": "4701 Brooklyn Ave NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/slurpstation",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "水果茶/特调",
-      "抹茶/特饮"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-snowyvillage",
-    "name": "Snowy Village",
-    "region": "UD",
-    "address": "5264 University Way, Seattle WA, 98034",
-    "source": "https://udistrictseattle.com/business/snowyvillage",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-subwayroosevelt",
-    "name": "Subway · Roosevelt",
-    "region": "UD",
-    "address": "4336 Roosevelt Way NE",
-    "source": "https://restaurants.subway.com/united-states/wa/seattle/4336-roosevelt-way-ne",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：美式/快餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-sultangyrogrill",
-    "name": "Sultan Gyro Grill",
-    "region": "UD",
-    "address": "4222 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "地中海/中东"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：地中海/中东。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-sunrightteastudio",
-    "name": "Sunright Tea Studio",
-    "region": "UD",
-    "address": "4545 Roosevelt Way NE | cite30†@sunrightteastudio.wa†www.instagram.com",
-    "source": "https://udistrictseattle.com/bobafest/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：茶香奶茶、水果茶；按商品选择糖度。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-sweetalchemyicecreamery",
-    "name": "Sweet Alchemy Ice Creamery",
-    "region": "UD",
-    "address": "4301 University Way NE",
-    "source": "https://udistrictseattle.com/business/sweetalchemy",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-sweetpeascakes",
-    "name": "Sweetpea's Cakes",
-    "region": "UD",
-    "address": "5509 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-tasteofxian",
-    "name": "Taste of Xi’an",
-    "region": "UD",
-    "address": "4523 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "重辣/麻辣",
-      "酸辣/开胃"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：凉皮、孜然牛肉夹馍。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-tearepublik",
-    "name": "Tea Republik",
-    "region": "UD",
-    "address": "4527 University Way NE",
-    "source": "https://udistrictseattle.com/business/tea-republik",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：水果茶/特调。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-thaitom",
-    "name": "Thai Tom",
-    "region": "UD",
-    "address": "4543 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "泰餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：泰餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-thai2go",
-    "name": "Thai2go",
-    "region": "UD",
-    "address": "4106 Brooklyn Ave NE Suite 102A",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "泰餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "重辣/麻辣",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：咖喱饭、酥脆鸡肉。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-thealley",
-    "name": "The Alley",
-    "region": "UD",
-    "address": "4515 Brooklyn Ave NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：黑糖鲜奶系列；适合想喝浓郁甜饮的日子。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-thebob",
-    "name": "The Bob",
-    "region": "UD",
-    "address": "4131 University Way NE",
-    "source": "https://udistrictseattle.com/business/thebob",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "重辣/麻辣",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：韩式街头小食、年糕。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-thecollegeinnpub",
-    "name": "The College Inn Pub",
-    "region": "UD",
-    "address": "4006 University Way NE",
-    "source": "https://udistrictseattle.com/business/collegeinnpub",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-thekrakenbarlounge",
-    "name": "The Kraken Bar & Lounge",
-    "region": "UD",
-    "address": "5828 Roosevelt Way NE",
-    "source": "https://udistrictseattle.com/business/the-kraken-bar-and-lounge",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-tigkitchenandbar",
-    "name": "Tig Kitchen and Bar",
-    "region": "UD",
-    "address": "5240 university way NE suite C",
-    "source": "https://udistrictseattle.com/business/tigkitchenandbar",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-timebistro",
-    "name": "Time Bistro",
-    "region": "UD",
-    "address": "4537B University Way NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/timebistro",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "越餐/东南亚"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "酸辣/开胃",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：越式小食、虾卷。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-timelesstea",
-    "name": "Timeless Tea",
-    "region": "UD",
-    "address": "1000 NE 50th St",
-    "source": "https://udistrictseattle.com/business/xyq678723",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶",
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-toastedbagelscoffee",
-    "name": "TOASTED Bagels & Coffee",
-    "region": "UD",
-    "address": "4756 15th Ave NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-towercafe",
-    "name": "Tower Café",
-    "region": "UD",
-    "address": "4333 Brooklyn Ave NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/tower-cafe",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-tptea",
-    "name": "TP Tea",
-    "region": "UD",
-    "address": "1312 NE 45th St Seattle WA 98105",
-    "source": "https://udistrictseattle.com/business/tp-tea-uw",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：经典珍珠奶茶，按菜单调整甜度。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-udupbop",
-    "name": "U DupBop",
-    "region": "UD",
-    "address": "4124 University Way NE, Seattle, WA, 98105",
-    "source": "https://udistrictseattle.com/business-category/food-drink",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-udonfreshjapanesenoodlestation",
-    "name": "U:Don Fresh Japanese Noodle Station",
-    "region": "UD",
-    "address": "4515 University Way NE, Seattle, WA 98105",
-    "source": "https://udistrictseattle.com/business/udon-noodles",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-uglymugcafe",
-    "name": "Ugly Mug Cafe",
-    "region": "UD",
-    "address": "1309 NE 43rd St",
-    "source": "https://udistrictseattle.com/business/ugly-mug-cafe",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-universitywestmansbagel",
-    "name": "University Westmans Bagel",
-    "region": "UD",
-    "address": "5201 University Way NE, Suite B",
-    "source": "https://udistrictseattle.com/business/westmansbagel",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-villagesushi",
-    "name": "Village Sushi",
-    "region": "UD",
-    "address": "5211 University Way NE",
-    "source": "https://udistrictseattle.com/business/village-sushi",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：日韩。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-voulasoffshorecafe",
-    "name": "Voulas Offshore Cafe",
-    "region": "UD",
-    "address": "658 NE Northlake Way",
-    "source": "https://udistrictseattle.com/business/voulas-offshore-cafe",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UD"
-  },
-  {
-    "id": "UD-xiannoodlesnorthave",
-    "name": "Xi'an Noodles · North Ave",
-    "region": "UD",
-    "address": "5259 University Way NE",
-    "source": "https://udistrictseattle.com/business/xiannoodlesuw",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：中餐。请打开门店信息查看招牌与最新菜单。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-xiannoodlessouthave",
-    "name": "Xi'an Noodles · South Ave",
-    "region": "UD",
-    "address": "4538 University Way NE",
-    "source": "https://udistrictseattle.com/chowdown/menu",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "重辣/麻辣",
-      "酸辣/开胃"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：油泼宽面、牛肉面。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-yantea",
-    "name": "YAN Tea",
-    "region": "UD",
-    "address": "4744 University Way NE, Seattle, WA",
-    "source": "https://udistrictseattle.com/business/yan-tea",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "水果茶/特调",
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "适合全糖/甜党"
-    ],
-    "note": "点单灵感：果茶、奶茶；想清爽一些可看水果系列。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UD-yifangtaiwanfruittea",
-    "name": "YiFang Taiwan Fruit Tea (一芳)",
-    "region": "UD",
-    "address": "5000 University Way NE",
-    "source": "https://udistrictseattle.com/business/yifang",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "水果茶/特调",
-      "波霸奶茶/鲜奶茶"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "冰饮/冰沙"
-    ],
-    "sweetness": [
-      "可调三分糖/无糖"
-    ],
-    "note": "点单灵感：水果茶；水果本身仍会提供糖分。",
-    "eventListed": true,
-    "location": "UD"
-  },
-  {
-    "id": "UV-babar",
-    "name": "Ba Bar",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/ba-bar/",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "越餐/东南亚"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "清淡/温和",
-      "酸辣/开胃"
-    ],
-    "budget": "$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：越式粉面和小食。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-bamboosushi",
-    "name": "Bamboo Sushi",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/bamboo-sushi/",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "日韩"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "清淡/温和",
-      "甜/咸"
-    ],
-    "budget": "$$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：寿司卷、刺身；适合坐下来慢慢吃。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-chipotle",
-    "name": "Chipotle",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/chipotle/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "墨西哥/拉美"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：墨西哥/拉美。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-delfinoschicagostylepizza",
-    "name": "Delfino’s Chicago Style Pizza",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/delfinos-chicago-style-pizza/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-delilleenville",
-    "name": "DeLille En Ville",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/delille-cellars/",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "法餐/欧式"
-    ],
-    "type": [
-      "现磨咖啡/Espresso",
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-dintaifung",
-    "name": "Din Tai Fung",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/din-tai-fung/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "中餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "清淡/温和",
-      "甜/咸"
-    ],
-    "budget": "$$$",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "点单灵感：小笼包、炒饭；多人一起分享更适合。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-elementalwoodfiredpizza",
-    "name": "Elemental Wood Fired Pizza",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/elemental-wood-fired-pizza/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "location": "UD",
+    "googlePlaceId": "ChIJkQqon_QUkFQRrw8vixeqiVw",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Little+Thai+4142+Brooklyn+Ave+NE+%23105%2C+Seattle%2C+WA&query_place_id=ChIJkQqon_QUkFQRrw8vixeqiVw",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Little+Thai&find_loc=4142+Brooklyn+Ave+NE+%23105%2C+Seattle%2C+WA"
   },
   {
     "id": "UV-eureka",
     "name": "Eureka!",
     "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/eureka/",
-    "status": "目录收录",
+    "address": "2614 NE 46th St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Eureka%21+2614+NE+46th+St%2C+Seattle%2C+WA&query_place_id=ChIJj4m2RY8UkFQRfbvu27xpFOQ",
+    "status": "地图已核对",
     "food": true,
     "drink": true,
     "cuisine": [
@@ -4170,100 +659,330 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJj4m2RY8UkFQRfbvu27xpFOQ",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Eureka%21+2614+NE+46th+St%2C+Seattle%2C+WA&query_place_id=ChIJj4m2RY8UkFQRfbvu27xpFOQ",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Eureka%21&find_loc=2614+NE+46th+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-evergreens",
-    "name": "Evergreens",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/evergreens/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
+    "id": "UD-macuteauw",
+    "name": "Macu Tea UW",
+    "region": "UD",
+    "address": "1100 NE 45th St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Macu+Tea+UW+1100+NE+45th+St%2C+Seattle%2C+WA&query_place_id=ChIJ7UyBHgAVkFQRLBcyohk6qM8",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "水果茶/特调",
+      "抹茶/特饮"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJ7UyBHgAVkFQRLBcyohk6qM8",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Macu+Tea+UW+1100+NE+45th+St%2C+Seattle%2C+WA&query_place_id=ChIJ7UyBHgAVkFQRLBcyohk6qM8",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Macu+Tea+UW&find_loc=1100+NE+45th+St%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-bobaup",
+    "name": "Boba Up",
+    "region": "UD",
+    "address": "4141 University Wy NE #103, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Boba+Up+4141+University+Wy+NE+%23103%2C+Seattle%2C+WA&query_place_id=ChIJP56j_coVkFQRvYmtsrRIjfo",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJP56j_coVkFQRvYmtsrRIjfo",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Boba+Up+4141+University+Wy+NE+%23103%2C+Seattle%2C+WA&query_place_id=ChIJP56j_coVkFQRvYmtsrRIjfo",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Boba+Up&find_loc=4141+University+Wy+NE+%23103%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-dontyellatme",
+    "name": "Don't Yell At Me",
+    "region": "UD",
+    "address": "4511 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Don%27t+Yell+At+Me+4511+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ1dDladYVkFQR6Wuy2BwDKRk",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "可调三分糖/无糖"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJ1dDladYVkFQR6Wuy2BwDKRk",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Don%27t+Yell+At+Me+4511+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ1dDladYVkFQR6Wuy2BwDKRk",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Don%27t+Yell+At+Me&find_loc=4511+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-seattlebestteauw",
+    "name": "Seattle Best Tea · UW",
+    "region": "UD",
+    "address": "4505 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Seattle+Best+Tea+%C2%B7+UW+4505+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJvchfJxcVkFQRi_Fku5qUndo",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "可调三分糖/无糖"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJvchfJxcVkFQRi_Fku5qUndo",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Seattle+Best+Tea+%C2%B7+UW+4505+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJvchfJxcVkFQRi_Fku5qUndo",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Seattle+Best+Tea+%C2%B7+UW&find_loc=4505+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-sunrightteastudio",
+    "name": "Sunright Tea Studio",
+    "region": "UD",
+    "address": "4545 Roosevelt Way NE #103, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Sunright+Tea+Studio+4545+Roosevelt+Way+NE+%23103%2C+Seattle%2C+WA&query_place_id=ChIJ92nOHS0VkFQRUKbV5kIiqV4",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "可调三分糖/无糖"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJ92nOHS0VkFQRUKbV5kIiqV4",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunright+Tea+Studio+4545+Roosevelt+Way+NE+%23103%2C+Seattle%2C+WA&query_place_id=ChIJ92nOHS0VkFQRUKbV5kIiqV4",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Sunright+Tea+Studio&find_loc=4545+Roosevelt+Way+NE+%23103%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-ohbearcafeteahousepudgypho",
+    "name": "OH! Bear Cafe & TeaHouse",
+    "region": "UD",
+    "address": "4708 11th Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=OH%21+Bear+Cafe+%26+TeaHouse+4708+11th+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJP3XOGWAUkFQRT_lH1mC1SfU",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "越餐/东南亚"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
+      "现磨咖啡/Espresso"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJP3XOGWAUkFQRT_lH1mC1SfU",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=OH%21+Bear+Cafe+%26+TeaHouse+4708+11th+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJP3XOGWAUkFQRT_lH1mC1SfU",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=OH%21+Bear+Cafe+%26+TeaHouse&find_loc=4708+11th+Ave+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-minasmatcha",
+    "name": "Mina's Matcha",
+    "region": "UD",
+    "address": "5200 Roosevelt Way NE Ste A, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Mina%27s+Matcha+5200+Roosevelt+Way+NE+Ste+A%2C+Seattle%2C+WA&query_place_id=ChIJgRGSPgAVkFQRbrop5Z87pSc",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "抹茶/特饮"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJgRGSPgAVkFQRbrop5Z87pSc",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mina%27s+Matcha+5200+Roosevelt+Way+NE+Ste+A%2C+Seattle%2C+WA&query_place_id=ChIJgRGSPgAVkFQRbrop5Z87pSc",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Mina%27s+Matcha&find_loc=5200+Roosevelt+Way+NE+Ste+A%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-cafehappy",
+    "name": "Cafe Happy",
+    "region": "UD",
+    "address": "1408 NE 40th St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Cafe+Happy+1408+NE+40th+St%2C+Seattle%2C+WA&query_place_id=ChIJj7f4vtEVkFQR8VInuEsHDT4",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
     "cuisine": [
       "沙拉/素食"
     ],
     "type": [
-      "其他饮品/待核实"
+      "波霸奶茶/鲜奶茶"
     ],
     "flavor": [
       "待核实"
     ],
     "budget": "待核实",
     "temp": [
-      "待核实"
+      "冰饮/冰沙"
     ],
     "sweetness": [
-      "待核实"
+      "适合全糖/甜党"
     ],
-    "note": "菜单方向：沙拉/素食。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJj7f4vtEVkFQR8VInuEsHDT4",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+Happy+1408+NE+40th+St%2C+Seattle%2C+WA&query_place_id=ChIJj7f4vtEVkFQR8VInuEsHDT4",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Cafe+Happy&find_loc=1408+NE+40th+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-franschocolates",
-    "name": "Fran’s Chocolates",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/frans-chocolates/",
-    "status": "目录收录",
+    "id": "UD-tptea",
+    "name": "TP Tea",
+    "region": "UD",
+    "address": "1312 NE 45th St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=TP+Tea+1312+NE+45th+St%2C+Seattle%2C+WA&query_place_id=ChIJi7m807QVkFQRmFNlM5Ht7B4",
+    "status": "地图已核对",
     "food": false,
-    "drink": false,
+    "drink": true,
     "cuisine": [
-      "烘焙/甜品"
+      "其他/待核实"
     ],
     "type": [
-      "其他饮品/待核实"
+      "波霸奶茶/鲜奶茶"
     ],
     "flavor": [
       "待核实"
     ],
     "budget": "待核实",
     "temp": [
-      "待核实"
+      "冰饮/冰沙"
     ],
     "sweetness": [
-      "待核实"
+      "可调三分糖/无糖"
     ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-frankiejos",
-    "name": "Frankie & Jo's",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/frankie-jos/",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJi7m807QVkFQRmFNlM5Ht7B4",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=TP+Tea+1312+NE+45th+St%2C+Seattle%2C+WA&query_place_id=ChIJi7m807QVkFQRmFNlM5Ht7B4",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=TP+Tea&find_loc=1312+NE+45th+St%2C+Seattle%2C+WA"
   },
   {
     "id": "UV-happylemon",
     "name": "Happy Lemon",
     "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/happy-lemon/",
-    "status": "目录收录",
+    "address": "2630 NE Village Ln, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Happy+Lemon+2630+NE+Village+Ln%2C+Seattle%2C+WA&query_place_id=ChIJexL63CIVkFQR_GlP5N93M-o",
+    "status": "地图已核对",
     "food": false,
     "drink": true,
     "cuisine": [
@@ -4283,108 +1002,235 @@ const storeDirectory = [
     "sweetness": [
       "适合全糖/甜党"
     ],
-    "note": "点单灵感：柠檬茶、奶盖茶。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJexL63CIVkFQR_GlP5N93M-o",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy+Lemon+2630+NE+Village+Ln%2C+Seattle%2C+WA&query_place_id=ChIJexL63CIVkFQR_GlP5N93M-o",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Happy+Lemon&find_loc=2630+NE+Village+Ln%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-hellorobin",
-    "name": "Hello Robin",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/hello-robin/",
-    "status": "目录收录",
+    "id": "UD-dingteaseattle",
+    "name": "Ding Tea Seattle",
+    "region": "UD",
+    "address": "4725 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Ding+Tea+Seattle+4725+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJc5fZVl8VkFQRuCMI2dKFB9Q",
+    "status": "地图已核对",
     "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-heybagel",
-    "name": "Hey Bagel",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/hey-bagel/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "咖啡馆/早午餐"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-hokkaidoramensantouka",
-    "name": "Hokkaido Ramen Santouka",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/hokkaido-ramen-santouka/",
-    "status": "目录收录",
-    "food": true,
-    "drink": false,
+    "drink": true,
     "cuisine": [
       "日韩"
     ],
     "type": [
-      "其他饮品/待核实"
+      "波霸奶茶/鲜奶茶"
     ],
     "flavor": [
-      "清淡/温和",
-      "甜/咸"
-    ],
-    "budget": "$$",
-    "temp": [
       "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
     ],
     "sweetness": [
-      "待核实"
+      "可调三分糖/无糖"
     ],
-    "note": "点单灵感：日式拉面，热汤很适合西雅图的雨天。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJc5fZVl8VkFQRuCMI2dKFB9Q",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ding+Tea+Seattle+4725+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJc5fZVl8VkFQRuCMI2dKFB9Q",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Ding+Tea+Seattle&find_loc=4725+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-joethejuice",
-    "name": "Joe & the Juice",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/joe-the-juice/",
-    "status": "目录收录",
+    "id": "UD-yantea",
+    "name": "YAN Tea",
+    "region": "UD",
+    "address": "4744 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=YAN+Tea+4744+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJGyBBWoAVkFQRhyIlbzt57AE",
+    "status": "地图已核对",
     "food": false,
     "drink": true,
     "cuisine": [
-      "咖啡馆/早午餐"
+      "烘焙/甜品"
+    ],
+    "type": [
+      "水果茶/特调",
+      "波霸奶茶/鲜奶茶"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJGyBBWoAVkFQRhyIlbzt57AE",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=YAN+Tea+4744+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJGyBBWoAVkFQRhyIlbzt57AE",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=YAN+Tea&find_loc=4744+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-bobalust",
+    "name": "BobaLust",
+    "region": "UD",
+    "address": "4553 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=BobaLust+4553+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ2xxT5fgVkFQReKUl3fwqq9k",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJ2xxT5fgVkFQReKUl3fwqq9k",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=BobaLust+4553+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ2xxT5fgVkFQReKUl3fwqq9k",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=BobaLust&find_loc=4553+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-thealley",
+    "name": "The Alley",
+    "region": "UD",
+    "address": "4515 Brooklyn Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=The+Alley+4515+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJ82aQClMVkFQRc8GNdAzLkT4",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJ82aQClMVkFQRc8GNdAzLkT4",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The+Alley+4515+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJ82aQClMVkFQRc8GNdAzLkT4",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=The+Alley&find_loc=4515+Brooklyn+Ave+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-cocofreshteajuice",
+    "name": "CoCo Fresh Tea & Juice",
+    "region": "UD",
+    "address": "4700 Brooklyn Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=CoCo+Fresh+Tea+%26+Juice+4700+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJJYfzOAAVkFQRmkSR4yhzbz0",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙"
+    ],
+    "sweetness": [
+      "可调三分糖/无糖"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJJYfzOAAVkFQRmkSR4yhzbz0",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=CoCo+Fresh+Tea+%26+Juice+4700+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJJYfzOAAVkFQRmkSR4yhzbz0",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=CoCo+Fresh+Tea+%26+Juice&find_loc=4700+Brooklyn+Ave+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-siphouse",
+    "name": "Sip House",
+    "region": "UD",
+    "address": "5001 Brooklyn Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Sip+House+5001+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJCUNyPKEVkFQR94JP8mIGtbA",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
     ],
     "type": [
       "现磨咖啡/Espresso",
+      "抹茶/特饮"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "冰饮/冰沙",
+      "热饮/温热"
+    ],
+    "sweetness": [
+      "可调三分糖/无糖",
+      "适合全糖/甜党"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJCUNyPKEVkFQR94JP8mIGtbA",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sip+House+5001+Brooklyn+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJCUNyPKEVkFQR94JP8mIGtbA",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Sip+House&find_loc=5001+Brooklyn+Ave+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-timelesstea",
+    "name": "Timeless Tea",
+    "region": "UD",
+    "address": "1000 NE 50th St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Timeless+Tea+1000+NE+50th+St%2C+Seattle%2C+WA&query_place_id=ChIJhzxzU3oVkFQRNzzsb0y3wAs",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "烘焙/甜品"
+    ],
+    "type": [
+      "波霸奶茶/鲜奶茶",
       "水果茶/特调"
     ],
     "flavor": [
@@ -4397,72 +1243,189 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：咖啡馆/早午餐。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJhzxzU3oVkFQRNzzsb0y3wAs",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Timeless+Tea+1000+NE+50th+St%2C+Seattle%2C+WA&query_place_id=ChIJhzxzU3oVkFQRNzzsb0y3wAs",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Timeless+Tea&find_loc=1000+NE+50th+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-joeykitchen",
-    "name": "JOEY Kitchen",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/joey-kitchen/",
-    "status": "目录收录",
+    "id": "UD-tearepublik",
+    "name": "Tea Republik",
+    "region": "UD",
+    "address": "4527 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Tea+Republik+4527+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJXSoE8ooUkFQRs0JkxDhFrnw",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJXSoE8ooUkFQRs0JkxDhFrnw",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tea+Republik+4527+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJXSoE8ooUkFQRs0JkxDhFrnw",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Tea+Republik&find_loc=4527+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-uglymugcafe",
+    "name": "Ugly Mug Cafe",
+    "region": "UD",
+    "address": "1309 NE 43rd St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Ugly+Mug+Cafe+1309+NE+43rd+St%2C+Seattle%2C+WA&query_place_id=ChIJwZGQzPQUkFQRRhd8D82mN_k",
+    "status": "地图已核对",
     "food": true,
     "drink": true,
     "cuisine": [
-      "美式/快餐"
+      "咖啡馆/早午餐"
+    ],
+    "type": [
+      "现磨咖啡/Espresso"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJwZGQzPQUkFQRRhd8D82mN_k",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ugly+Mug+Cafe+1309+NE+43rd+St%2C+Seattle%2C+WA&query_place_id=ChIJwZGQzPQUkFQRRhd8D82mN_k",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Ugly+Mug+Cafe&find_loc=1309+NE+43rd+St%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-boonboonacoffee",
+    "name": "Boon Boona Coffee",
+    "region": "UD",
+    "address": "4326 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Boon+Boona+Coffee+4326+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJkbY44PgVkFQRWJAFf4MgEW8",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "其他/待核实"
+    ],
+    "type": [
+      "现磨咖啡/Espresso"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJkbY44PgVkFQRWJAFf4MgEW8",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Boon+Boona+Coffee+4326+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJkbY44PgVkFQRWJAFf4MgEW8",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Boon+Boona+Coffee&find_loc=4326+University+Wy+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-coldplate",
+    "name": "Cold Plate",
+    "region": "UD",
+    "address": "5240 University Wy NE Ste B, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Cold+Plate+5240+University+Wy+NE+Ste+B%2C+Seattle%2C+WA&query_place_id=ChIJB8GLH4sVkFQRGZ9sB4vnMeQ",
+    "status": "地图已核对",
+    "food": false,
+    "drink": true,
+    "cuisine": [
+      "烘焙/甜品"
+    ],
+    "type": [
+      "水果茶/特调"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJB8GLH4sVkFQRGZ9sB4vnMeQ",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cold+Plate+5240+University+Wy+NE+Ste+B%2C+Seattle%2C+WA&query_place_id=ChIJB8GLH4sVkFQRGZ9sB4vnMeQ",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Cold+Plate&find_loc=5240+University+Wy+NE+Ste+B%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UV-bamboosushi",
+    "name": "Bamboo Sushi",
+    "region": "UV",
+    "address": "2675 NE University Village St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Bamboo+Sushi+2675+NE+University+Village+St%2C+Seattle%2C+WA&query_place_id=ChIJj83EL2EVkFQRJZUWk6KIXn8",
+    "status": "地图已核对",
+    "food": true,
+    "drink": true,
+    "cuisine": [
+      "日韩"
     ],
     "type": [
       "精酿/酒吧（21+）"
     ],
     "flavor": [
-      "待核实"
+      "清淡/温和",
+      "甜/咸"
     ],
-    "budget": "待核实",
+    "budget": "$$$",
     "temp": [
       "待核实"
     ],
     "sweetness": [
       "待核实"
     ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJj83EL2EVkFQRJZUWk6KIXn8",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bamboo+Sushi+2675+NE+University+Village+St%2C+Seattle%2C+WA&query_place_id=ChIJj83EL2EVkFQRJZUWk6KIXn8",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Bamboo+Sushi&find_loc=2675+NE+University+Village+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-mendocinofarms",
-    "name": "Mendocino Farms",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/mendocino-farms/",
-    "status": "尚未开业",
-    "food": true,
-    "drink": false,
-    "cuisine": [
-      "沙拉/素食"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：沙拉/素食。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-mochinut",
-    "name": "Mochinut",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/mochinut/",
-    "status": "目录收录",
+    "id": "UD-lunecafe",
+    "name": "Lune Cafe",
+    "region": "UD",
+    "address": "5000 University Wy NE Ste E, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Lune+Cafe+5000+University+Wy+NE+Ste+E%2C+Seattle%2C+WA&query_place_id=ChIJ97RnTgAVkFQRrtjbDZkReb4",
+    "status": "地图已核对",
     "food": false,
     "drink": false,
     "cuisine": [
@@ -4481,16 +1444,22 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJ97RnTgAVkFQRrtjbDZkReb4",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lune+Cafe+5000+University+Wy+NE+Ste+E%2C+Seattle%2C+WA&query_place_id=ChIJ97RnTgAVkFQRrtjbDZkReb4",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Lune+Cafe&find_loc=5000+University+Wy+NE+Ste+E%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-mollymoonsicecream",
-    "name": "Molly Moon’s Ice Cream",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/molly-moons-ice-cream/",
-    "status": "目录收录",
+    "id": "UD-scorpiocafe",
+    "name": "Scorpio Cafe",
+    "region": "UD",
+    "address": "4754 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Scorpio+Cafe+4754+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ-YdHJSsVkFQROYp12AUeJEw",
+    "status": "地图已核对",
     "food": false,
     "drink": false,
     "cuisine": [
@@ -4509,16 +1478,22 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJ-YdHJSsVkFQROYp12AUeJEw",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Scorpio+Cafe+4754+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ-YdHJSsVkFQROYp12AUeJEw",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Scorpio+Cafe&find_loc=4754+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
     "id": "UV-mrwestcafebar",
     "name": "Mr. West Cafe Bar",
     "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/mr-west-cafe-bar/",
-    "status": "目录收录",
+    "address": "2685 NE Village Ln, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Mr.+West+Cafe+Bar+2685+NE+Village+Ln%2C+Seattle%2C+WA&query_place_id=ChIJTZB2YXgVkFQRsdAyHXoPgZM",
+    "status": "地图已核对",
     "food": true,
     "drink": true,
     "cuisine": [
@@ -4539,20 +1514,25 @@ const storeDirectory = [
     "sweetness": [
       "可调三分糖/无糖"
     ],
-    "note": "点单灵感：Espresso、拿铁，适合逛街时休息一下。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJTZB2YXgVkFQRsdAyHXoPgZM",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mr.+West+Cafe+Bar+2685+NE+Village+Ln%2C+Seattle%2C+WA&query_place_id=ChIJTZB2YXgVkFQRsdAyHXoPgZM",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Mr.+West+Cafe+Bar&find_loc=2685+NE+Village+Ln%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-nespresso",
-    "name": "Nespresso",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/nespresso/",
-    "status": "目录收录",
-    "food": false,
+    "id": "UD-cafesolstice",
+    "name": "Cafe Solstice",
+    "region": "UD",
+    "address": "4116 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Cafe+Solstice+4116+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJaZE6QvMUkFQRXCfaq6_QnBE",
+    "status": "地图已核对",
+    "food": true,
     "drink": true,
     "cuisine": [
-      "其他/待核实"
+      "咖啡馆/早午餐"
     ],
     "type": [
       "现磨咖啡/Espresso"
@@ -4567,16 +1547,22 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "胶囊咖啡与 Espresso，设有 To Go Bar。请查看当日饮品菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJaZE6QvMUkFQRXCfaq6_QnBE",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+Solstice+4116+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJaZE6QvMUkFQRXCfaq6_QnBE",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Cafe+Solstice&find_loc=4116+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-nextlevelveggiegrill",
-    "name": "Next Level Veggie Grill",
+    "id": "UV-mendocinofarms",
+    "name": "Mendocino Farms",
     "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/veggie-grill/",
-    "status": "目录收录",
+    "address": "2696 NE University Village St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Mendocino+Farms+2696+NE+University+Village+St%2C+Seattle%2C+WA&query_place_id=ChIJOesfoSQVkFQR7WyisENXh-M",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
@@ -4595,109 +1581,31 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：沙拉/素食。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJOesfoSQVkFQR7WyisENXh-M",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mendocino+Farms+2696+NE+University+Village+St%2C+Seattle%2C+WA&query_place_id=ChIJOesfoSQVkFQR7WyisENXh-M",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Mendocino+Farms&find_loc=2696+NE+University+Village+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-pastaco",
-    "name": "Pasta & Co.",
+    "id": "UV-hokkaidoramensantouka",
+    "name": "Hokkaido Ramen Santouka",
     "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/pasta-co/",
-    "status": "目录收录",
+    "address": "2626 NE University Village St, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Hokkaido+Ramen+Santouka+2626+NE+University+Village+St%2C+Seattle%2C+WA&query_place_id=ChIJ_0xsUY8UkFQRekt-sjJOM88",
+    "status": "地图已核对",
     "food": true,
     "drink": false,
     "cuisine": [
-      "意餐/披萨"
+      "日韩"
     ],
     "type": [
       "其他饮品/待核实"
     ],
     "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：意餐/披萨。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-piattiristorantebar",
-    "name": "Piatti Ristorante & Bar",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/piatti-ristorante-bar/",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "意餐/披萨"
-    ],
-    "type": [
-      "精酿/酒吧（21+）"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "请打开门店信息或地图查看最新菜单。 酒精饮品仅限 21 岁及以上。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-rachelsgingerbeer",
-    "name": "Rachel's Ginger Beer",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/rachels-ginger-beer/",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "其他/待核实"
-    ],
-    "type": [
-      "水果茶/特调"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：水果茶/特调。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-shakeshack",
-    "name": "Shake Shack",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/shake-shack/",
-    "status": "目录收录",
-    "food": true,
-    "drink": true,
-    "cuisine": [
-      "美式/快餐"
-    ],
-    "type": [
-      "酸奶/奶昔"
-    ],
-    "flavor": [
+      "清淡/温和",
       "甜/咸"
     ],
     "budget": "$$",
@@ -4707,16 +1615,21 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "点单灵感：汉堡、薯条。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJ_0xsUY8UkFQRekt-sjJOM88",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hokkaido+Ramen+Santouka+2626+NE+University+Village+St%2C+Seattle%2C+WA&query_place_id=ChIJ_0xsUY8UkFQRekt-sjJOM88",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Hokkaido+Ramen+Santouka&find_loc=2626+NE+University+Village+St%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-starbucksuniversityvillage",
-    "name": "Starbucks University Village",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/starbucks-university-village/",
-    "status": "目录收录",
+    "id": "UD-cafeallegro",
+    "name": "Cafe Allegro",
+    "region": "UD",
+    "address": "Alleyway, 4214 University Wy NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Cafe+Allegro+Alleyway%2C+4214+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ-foDq_QUkFQRMB-kVqbhxQw",
+    "status": "地图已核对",
     "food": false,
     "drink": true,
     "cuisine": [
@@ -4734,23 +1647,61 @@ const storeDirectory = [
       "热饮/温热"
     ],
     "sweetness": [
-      "可调三分糖/无糖",
-      "适合全糖/甜党"
+      "可调三分糖/无糖"
     ],
-    "note": "点单灵感：美式、拿铁或季节饮品；点单时选择糖浆用量。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJ-foDq_QUkFQRMB-kVqbhxQw",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+Allegro+Alleyway%2C+4214+University+Wy+NE%2C+Seattle%2C+WA&query_place_id=ChIJ-foDq_QUkFQRMB-kVqbhxQw",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Cafe+Allegro&find_loc=Alleyway%2C+4214+University+Wy+NE%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-starbucksuniversityvillagenorth",
-    "name": "Starbucks University Village North",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/starbucks-university-village-north/",
-    "status": "目录收录",
-    "food": false,
+    "id": "UD-voulasoffshorecafe",
+    "name": "Voulas Offshore Cafe",
+    "region": "UD",
+    "address": "658 NE Northlake Way, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Voulas+Offshore+Cafe+658+NE+Northlake+Way%2C+Seattle%2C+WA&query_place_id=ChIJ_6PM3vAUkFQRKmNERgd3N8M",
+    "status": "地图已核对",
+    "food": true,
+    "drink": false,
+    "cuisine": [
+      "咖啡馆/早午餐"
+    ],
+    "type": [
+      "其他饮品/待核实"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJ_6PM3vAUkFQRKmNERgd3N8M",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Voulas+Offshore+Cafe+658+NE+Northlake+Way%2C+Seattle%2C+WA&query_place_id=ChIJ_6PM3vAUkFQRKmNERgd3N8M",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Voulas+Offshore+Cafe&find_loc=658+NE+Northlake+Way%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-morsel",
+    "name": "Morsel",
+    "region": "UD",
+    "address": "5000 University Wy NE Ste D, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Morsel+5000+University+Wy+NE+Ste+D%2C+Seattle%2C+WA&query_place_id=ChIJA1uIwmEUkFQRl-y6b01KqXk",
+    "status": "地图已核对",
+    "food": true,
     "drink": true,
     "cuisine": [
-      "其他/待核实"
+      "咖啡馆/早午餐"
     ],
     "type": [
       "现磨咖啡/Espresso"
@@ -4765,16 +1716,88 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：现磨咖啡/Espresso。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJA1uIwmEUkFQRl-y6b01KqXk",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Morsel+5000+University+Wy+NE+Ste+D%2C+Seattle%2C+WA&query_place_id=ChIJA1uIwmEUkFQRl-y6b01KqXk",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Morsel&find_loc=5000+University+Wy+NE+Ste+D%2C+Seattle%2C+WA"
   },
   {
-    "id": "UV-theconfectionery",
-    "name": "The Confectionery",
+    "id": "UD-portagebaycafe",
+    "name": "Portage Bay Cafe",
+    "region": "UD",
+    "address": "4130 Roosevelt Way NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Portage+Bay+Cafe+4130+Roosevelt+Way+NE%2C+Seattle%2C+WA&query_place_id=ChIJzZzBbfQUkFQRP0f0nUznInY",
+    "status": "地图已核对",
+    "food": true,
+    "drink": false,
+    "cuisine": [
+      "咖啡馆/早午餐"
+    ],
+    "type": [
+      "其他饮品/待核实"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UD",
+    "googlePlaceId": "ChIJzZzBbfQUkFQRP0f0nUznInY",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Portage+Bay+Cafe+4130+Roosevelt+Way+NE%2C+Seattle%2C+WA&query_place_id=ChIJzZzBbfQUkFQRP0f0nUznInY",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Portage+Bay+Cafe&find_loc=4130+Roosevelt+Way+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UD-toastedbagelscoffee",
+    "name": "TOASTED Bagels & Coffee",
+    "region": "UD",
+    "address": "4756 15th Ave NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=TOASTED+Bagels+%26+Coffee+4756+15th+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJQX9Ze9sVkFQRHDofdmQubEk",
+    "status": "地图已核对",
+    "food": true,
+    "drink": true,
+    "cuisine": [
+      "咖啡馆/早午餐"
+    ],
+    "type": [
+      "现磨咖啡/Espresso"
+    ],
+    "flavor": [
+      "待核实"
+    ],
+    "budget": "待核实",
+    "temp": [
+      "待核实"
+    ],
+    "sweetness": [
+      "待核实"
+    ],
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "eventListed": true,
+    "location": "UD",
+    "googlePlaceId": "ChIJQX9Ze9sVkFQRHDofdmQubEk",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=TOASTED+Bagels+%26+Coffee+4756+15th+Ave+NE%2C+Seattle%2C+WA&query_place_id=ChIJQX9Ze9sVkFQRHDofdmQubEk",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=TOASTED+Bagels+%26+Coffee&find_loc=4756+15th+Ave+NE%2C+Seattle%2C+WA"
+  },
+  {
+    "id": "UV-mochinut",
+    "name": "Mochinut",
     "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/the-confectionery/",
-    "status": "目录收录",
+    "address": "4609 Village Ct NE, Seattle, WA",
+    "source": "https://www.google.com/maps/search/?api=1&query=Mochinut+4609+Village+Ct+NE%2C+Seattle%2C+WA&query_place_id=ChIJ5VTS0qsVkFQRkq-cNeCG-vk",
+    "status": "地图已核对",
     "food": false,
     "drink": false,
     "cuisine": [
@@ -4793,240 +1816,42 @@ const storeDirectory = [
     "sweetness": [
       "待核实"
     ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-thefrenchguysbakery",
-    "name": "The French Guys Bakery",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/the-french-guys-bakery/",
-    "status": "目录收录",
-    "food": false,
-    "drink": true,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "现磨咖啡/Espresso"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
-  },
-  {
-    "id": "UV-trophycupcakesparty",
-    "name": "Trophy Cupcakes & Party",
-    "region": "UV",
-    "address": "",
-    "source": "https://uvillage.com/directory/trophy-cupcakes-party/",
-    "status": "目录收录",
-    "food": false,
-    "drink": false,
-    "cuisine": [
-      "烘焙/甜品"
-    ],
-    "type": [
-      "其他饮品/待核实"
-    ],
-    "flavor": [
-      "待核实"
-    ],
-    "budget": "待核实",
-    "temp": [
-      "待核实"
-    ],
-    "sweetness": [
-      "待核实"
-    ],
-    "note": "菜单方向：烘焙/甜品。请打开门店信息查看招牌与最新菜单。",
-    "location": "UV"
+    "note": "打开 Google Maps 门店页查看菜单与营业信息；Yelp 链接按店名和地址搜索。",
+    "location": "UV",
+    "googlePlaceId": "ChIJ5VTS0qsVkFQRkq-cNeCG-vk",
+    "verifiedOn": "2026-10-13",
+    "verifiedPlatform": "Google Maps",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mochinut+4609+Village+Ct+NE%2C+Seattle%2C+WA&query_place_id=ChIJ5VTS0qsVkFQRkq-cNeCG-vk",
+    "yelpSearchUrl": "https://www.yelp.com/search?find_desc=Mochinut&find_loc=4609+Village+Ct+NE%2C+Seattle%2C+WA"
   }
 ];
-const foodStores=storeDirectory.filter(s=>s.food);
-const drinkStores=storeDirectory.filter(s=>s.drink);
-const filterConfig={
-  "food": [
-    {
-      "key": "cuisine",
-      "label": "菜系",
-      "english": "Cuisine",
-      "multi": true,
-      "options": [
-        "中餐",
-        "泰餐",
-        "日韩",
-        "越餐/东南亚",
-        "美式/快餐",
-        "地中海/中东",
-        "印度/南亚",
-        "墨西哥/拉美",
-        "意餐/披萨",
-        "夏威夷/Poke",
-        "咖啡馆/早午餐",
-        "烘焙/甜品",
-        "沙拉/素食",
-        "法餐/欧式",
-        "其他/待核实"
-      ]
-    },
-    {
-      "key": "flavor",
-      "label": "口味偏好",
-      "english": "Flavor",
-      "multi": true,
-      "options": [
-        "重辣/麻辣",
-        "酸辣/开胃",
-        "清淡/温和",
-        "甜/咸",
-        "待核实"
-      ]
-    },
-    {
-      "key": "budget",
-      "label": "预算",
-      "english": "Budget",
-      "multi": false,
-      "options": [
-        {
-          "value": "$",
-          "label": "$ (<$15)"
-        },
-        {
-          "value": "$$",
-          "label": "$$ ($15–$30)"
-        },
-        {
-          "value": "$$$",
-          "label": "$$$ (>$30)"
-        },
-        "待核实"
-      ]
-    },
-    {
-      "key": "location",
-      "label": "区域",
-      "english": "Location",
-      "multi": false,
-      "options": [
-        {
-          "value": "UD",
-          "label": "UD · U-District"
-        },
-        {
-          "value": "UV",
-          "label": "UV · University Village"
-        }
-      ]
-    },
-    {
-      "key": "status",
-      "label": "名单状态",
-      "english": "Directory",
-      "multi": false,
-      "options": [
-        "目录收录",
-        "资料待核实",
-        "尚未开业"
-      ]
-    }
-  ],
-  "drink": [
-    {
-      "key": "type",
-      "label": "类别",
-      "english": "Type",
-      "multi": true,
-      "options": [
-        "波霸奶茶/鲜奶茶",
-        "水果茶/特调",
-        "现磨咖啡/Espresso",
-        "抹茶/特饮",
-        "酸奶/奶昔",
-        "精酿/酒吧（21+）",
-        "其他饮品/待核实"
-      ]
-    },
-    {
-      "key": "temp",
-      "label": "温度 / 季节",
-      "english": "Temp",
-      "multi": false,
-      "options": [
-        "冰饮/冰沙",
-        "热饮/温热",
-        "待核实"
-      ]
-    },
-    {
-      "key": "sweetness",
-      "label": "甜度 / 健康",
-      "english": "Sweetness",
-      "multi": false,
-      "options": [
-        "可调三分糖/无糖",
-        "适合全糖/甜党",
-        "待核实"
-      ]
-    },
-    {
-      "key": "location",
-      "label": "区域",
-      "english": "Location",
-      "multi": false,
-      "options": [
-        {
-          "value": "UD",
-          "label": "UD · U-District"
-        },
-        {
-          "value": "UV",
-          "label": "UV · University Village"
-        }
-      ]
-    },
-    {
-      "key": "status",
-      "label": "名单状态",
-      "english": "Directory",
-      "multi": false,
-      "options": [
-        "目录收录",
-        "资料待核实",
-        "尚未开业"
-      ]
-    }
-  ]
-};
+function hasVerifiedListing(s){
+  try { const u=new URL(s.googleMapsUrl); return s.verifiedPlatform==='Google Maps' &&
+    Boolean(s.verifiedOn) && /^ChIJ[\w-]+$/.test(s.googlePlaceId||'') &&
+    u.hostname==='www.google.com' && u.pathname.startsWith('/maps/') &&
+    u.searchParams.get('query_place_id')===s.googlePlaceId; } catch { return false; }
+}
+const foodStores=storeDirectory.filter(s=>s.food&&hasVerifiedListing(s));
+const drinkStores=storeDirectory.filter(s=>s.drink&&hasVerifiedListing(s));
+const filterConfig={"food": [{"key": "cuisine", "label": "菜系", "english": "Cuisine", "multi": true, "options": ["中餐", "泰餐", "日韩", "越餐/东南亚", "美式/快餐", "地中海/中东", "印度/南亚", "墨西哥/拉美", "意餐/披萨", "夏威夷/Poke", "咖啡馆/早午餐", "烘焙/甜品", "沙拉/素食", "法餐/欧式", "其他/待核实"]}, {"key": "flavor", "label": "口味偏好", "english": "Flavor", "multi": true, "options": ["重辣/麻辣", "酸辣/开胃", "清淡/温和", "甜/咸", "待核实"]}, {"key": "budget", "label": "预算", "english": "Budget", "multi": false, "options": [{"value": "$", "label": "$ (<$15)"}, {"value": "$$", "label": "$$ ($15–$30)"}, {"value": "$$$", "label": "$$$ (>$30)"}, "待核实"]}, {"key": "location", "label": "区域", "english": "Location", "multi": false, "options": [{"value": "UD", "label": "UD · U-District"}, {"value": "UV", "label": "UV · University Village"}]}], "drink": [{"key": "type", "label": "类别", "english": "Type", "multi": true, "options": ["波霸奶茶/鲜奶茶", "水果茶/特调", "现磨咖啡/Espresso", "抹茶/特饮", "酸奶/奶昔", "精酿/酒吧（21+）", "其他饮品/待核实"]}, {"key": "temp", "label": "温度 / 季节", "english": "Temp", "multi": false, "options": ["冰饮/冰沙", "热饮/温热", "待核实"]}, {"key": "sweetness", "label": "甜度 / 健康", "english": "Sweetness", "multi": false, "options": ["可调三分糖/无糖", "适合全糖/甜党", "待核实"]}, {"key": "location", "label": "区域", "english": "Location", "multi": false, "options": [{"value": "UD", "label": "UD · U-District"}, {"value": "UV", "label": "UV · University Village"}]}]};
 const $=id=>document.getElementById(id),canvas=$("wheel"),ctx=canvas.getContext("2d"),tabs=[...document.querySelectorAll(".tab")],dialog=$("result"),TAU=Math.PI*2;
 const preferences={food:{},drink:{}},palettes={food:["#F4BC91","#F8D9A4","#EEC4B6","#E5D6AC","#F7E4C9","#DFA88B"],drink:["#BBD2AD","#D9E4BC","#BCD8CD","#E7D8B6","#D3DFD1","#AFC4B1"]};
 let mode="food",candidates=[],rotation=0,spinning=false,lastStore=null,language="zh";
 try{language=localStorage.getItem('mc3k-language')==='en'?'en':'zh';}catch{}
 const mod=(n,d)=>((n%d)+d)%d,asArray=v=>Array.isArray(v)?v:[v];
-const englishLabels={"菜系":"Cuisine","口味偏好":"Flavor","预算":"Budget","类别":"Type","温度 / 季节":"Temperature","甜度 / 健康":"Sweetness","区域":"Area","名单状态":"Directory status","中餐":"Chinese","泰餐":"Thai","日韩":"Japanese / Korean","越餐/东南亚":"Vietnamese / Southeast Asian","美式/快餐":"American / Fast food","地中海/中东":"Mediterranean / Middle Eastern","印度/南亚":"Indian / South Asian","墨西哥/拉美":"Mexican / Latin American","意餐/披萨":"Italian / Pizza","夏威夷/Poke":"Hawaiian / Poke","咖啡馆/早午餐":"Café / Brunch","烘焙/甜品":"Bakery / Desserts","沙拉/素食":"Salads / Vegetarian","法餐/欧式":"French / European","其他/待核实":"Other / Unverified","重辣/麻辣":"Hot / Sichuan spicy","酸辣/开胃":"Tangy / Spicy","清淡/温和":"Light / Mild","甜/咸":"Sweet / Savory","待核实":"Unverified","波霸奶茶/鲜奶茶":"Boba / Milk tea","水果茶/特调":"Fruit tea / Specialty drinks","现磨咖啡/Espresso":"Coffee / Espresso","抹茶/特饮":"Matcha / Specialty lattes","酸奶/奶昔":"Yogurt / Milkshakes","精酿/酒吧（21+）":"Craft beer / Bars (21+)","其他饮品/待核实":"Other drinks / Unverified","冰饮/冰沙":"Iced / Blended","热饮/温热":"Hot / Warm","可调三分糖/无糖":"Low-sugar / Unsweetened options","适合全糖/甜党":"Sweet tooth","UD · U-District":"UD · U-District","UV · University Village":"UV · University Village","目录收录":"Directory-listed","资料待核实":"Details unverified","尚未开业":"Opening soon","不限":"Any"};
-const copy={zh:{brand:'今天吃喝什么？',foodTab:'🍜 今天吃什么',drinkTab:'🧋 今天喝什么',foodTitle:'今天吃什么？',drinkTitle:'今天喝什么？',foodSubtitle:'把纠结交给转盘，把胃留给好吃的。',drinkSubtitle:'奶茶、咖啡还是抹茶？让今天多一点好心情。',wheelLabel:'今日的灵感，转出来',filterTitle:'先选一点偏好',reset:'重置筛选 ↺',filterDescription:'多选条件组内满足任一项即可，组与组之间需同时满足。',candidateTitle:'今天的候选清单',searchLabel:'搜索候选店铺',searchPlaceholder:'搜索店名或地址…',empty:'没有找到匹配的店铺，试试放宽条件吧！',noSearch:'没有匹配搜索的店铺。搜索只影响列表展示，不影响抽签。',noList:'放宽筛选，让更多好店加入转盘。',idle:'每家候选店等概率 · 搜索只影响列表展示',busy:'正在为你挑选…',spinning:'正在抽签，等转盘慢慢停下来…',foodSpin:'转一下，开饭！ ↗',drinkSpin:'转一下，喝点好！ ↗',selected:'已抽中：',foodResult:'今天就吃：',drinkResult:'今天就喝：',recommendation:'招牌 / 点单灵感',maps:'Google Maps 看位置 ↗',source:'查看门店信息 ↗',again:'换一个 / 再抽一次 ↻',reroll:'再抽一次会避开这家，其余候选等概率。',single:'目前只有这一家候选，放宽筛选可以发现更多选择。',uvAddress:'University Village 商场内',udAddress:'地址待核实 · U-District',close:'关闭结果弹窗',multiple:'多选',singleChoice:'单选',modeLabel:'选择吃喝模式',wheelAria:'随机抽签转盘',filterAria:'筛选店铺',footerTagline:'少一点纠结，多一点好吃的。Made for hungry Huskies ♡',footerData:'吃什么只收录提供正餐的餐厅，不包括茶饮店、纯咖啡店和甜品店。价格、冷热与糖度未确认的标为“待核实”；尚未开业店铺默认不参与抽签。',footerScope:'范围：UD 按 U-District 官方餐饮目录街区口径；UV 按 University Village 商场目录。名单核对：2026-10-12。公开目录可能滞后或漏收新店，本页不查询实时营业状态。',sources:'名单来源：',udSource:'U-District 餐饮总目录',bobaSource:'Boba Fest 名单',uvSource:'U-Village 官方目录'},en:{brand:'What to eat & drink?',foodTab:'🍜 What to eat',drinkTab:'🧋 What to drink',foodTitle:'What to eat today?',drinkTitle:'What to drink today?',foodSubtitle:'Less deciding. More delicious discoveries.',drinkSubtitle:'Boba, coffee or matcha? A little spin for a happier day.',wheelLabel:'A little spin of inspiration',filterTitle:'Pick your preferences',reset:'Reset filters ↺',filterDescription:'Match any selected option within a group, and all selected groups.',candidateTitle:'Your shortlist today',searchLabel:'Search the shortlist',searchPlaceholder:'Search a store or address…',empty:'No matching stores. Try relaxing your filters!',noSearch:'No search matches. Search changes the list only, not the draw.',noList:'Relax your filters to discover more places.',idle:'Equal odds for every candidate · Search changes the list only',busy:'Picking your next stop…',spinning:'Spinning… let the wheel decide!',foodSpin:'Spin for a meal! ↗',drinkSpin:'Spin for a drink! ↗',selected:'Selected: ',foodResult:'Today, eat at:',drinkResult:'Today, drink at:',recommendation:'Menu inspiration',maps:'Find it on Google Maps ↗',source:'View store information ↗',again:'Pick another / Spin again ↻',reroll:'The next spin excludes this store. All remaining stores have equal odds.',single:'Only one candidate. Relax your filters to discover more options.',uvAddress:'Inside University Village',udAddress:'Address unverified · U-District',close:'Close result dialog',multiple:'Multiple',singleChoice:'Single',modeLabel:'Choose food or drinks',wheelAria:'Random selection wheel',filterAria:'Filter stores',footerTagline:'Less deciding, more delicious discoveries. Made for hungry Huskies ♡',footerData:'Food mode includes meal-serving restaurants, excluding tea shops, coffee-only cafés and dessert shops. Unconfirmed prices, temperature and sweetness are marked unverified. Opening-soon stores are excluded by default.',footerScope:'Area: UD follows the U-District food directory; UV follows the University Village shopping-center directory. List checked: October 12, 2026. Public directories may lag or miss new stores. Live opening status is not checked.',sources:'Directory sources:',udSource:'U-District food directory',bobaSource:'Boba Fest directory',uvSource:'U-Village directory'}};
+const englishLabels={"菜系":"Cuisine","口味偏好":"Flavor","预算":"Budget","类别":"Type","温度 / 季节":"Temperature","甜度 / 健康":"Sweetness","区域":"Area","名单状态":"Directory status","中餐":"Chinese","泰餐":"Thai","日韩":"Japanese / Korean","越餐/东南亚":"Vietnamese / Southeast Asian","美式/快餐":"American / Fast food","地中海/中东":"Mediterranean / Middle Eastern","印度/南亚":"Indian / South Asian","墨西哥/拉美":"Mexican / Latin American","意餐/披萨":"Italian / Pizza","夏威夷/Poke":"Hawaiian / Poke","咖啡馆/早午餐":"Café / Brunch","烘焙/甜品":"Bakery / Desserts","沙拉/素食":"Salads / Vegetarian","法餐/欧式":"French / European","其他/待核实":"Other / Unverified","重辣/麻辣":"Hot / Sichuan spicy","酸辣/开胃":"Tangy / Spicy","清淡/温和":"Light / Mild","甜/咸":"Sweet / Savory","待核实":"Unverified","波霸奶茶/鲜奶茶":"Boba / Milk tea","水果茶/特调":"Fruit tea / Specialty drinks","现磨咖啡/Espresso":"Coffee / Espresso","抹茶/特饮":"Matcha / Specialty lattes","酸奶/奶昔":"Yogurt / Milkshakes","精酿/酒吧（21+）":"Craft beer / Bars (21+)","其他饮品/待核实":"Other drinks / Unverified","冰饮/冰沙":"Iced / Blended","热饮/温热":"Hot / Warm","可调三分糖/无糖":"Low-sugar / Unsweetened options","适合全糖/甜党":"Sweet tooth","UD · U-District":"UD · U-District","UV · University Village":"UV · University Village","地图已核对":"Maps listing checked","资料待核实":"Details unverified","尚未开业":"Opening soon","不限":"Any"};
+const copy={zh:{brand:'今天吃喝什么？',foodTab:'🍜 今天吃什么',drinkTab:'🧋 今天喝什么',foodTitle:'今天吃什么？',drinkTitle:'今天喝什么？',foodSubtitle:'把纠结交给转盘，把胃留给好吃的。',drinkSubtitle:'奶茶、咖啡还是抹茶？让今天多一点好心情。',wheelLabel:'今日的灵感，转出来',filterTitle:'先选一点偏好',reset:'重置筛选 ↺',filterDescription:'多选条件组内满足任一项即可，组与组之间需同时满足。',candidateTitle:'今天的候选清单',searchLabel:'搜索候选店铺',searchPlaceholder:'搜索店名或地址…',empty:'没有找到匹配的店铺，试试放宽条件吧！',noSearch:'没有匹配搜索的店铺。搜索只影响列表展示，不影响抽签。',noList:'放宽筛选，让更多好店加入转盘。',idle:'每家候选店等概率 · 搜索只影响列表展示',busy:'正在为你挑选…',spinning:'正在抽签，等转盘慢慢停下来…',foodSpin:'转一下，开饭！ ↗',drinkSpin:'转一下，喝点好！ ↗',selected:'已抽中：',foodResult:'今天就吃：',drinkResult:'今天就喝：',recommendation:'门店信息',maps:'Google Maps 看位置 ↗',source:'在 Yelp 搜索此店 ↗',again:'换一个 / 再抽一次 ↻',reroll:'再抽一次会避开这家，其余候选等概率。',single:'目前只有这一家候选，放宽筛选可以发现更多选择。',uvAddress:'University Village 商场内',udAddress:'地址待核实 · U-District',close:'关闭结果弹窗',multiple:'多选',singleChoice:'单选',modeLabel:'选择吃喝模式',wheelAria:'随机抽签转盘',filterAria:'筛选店铺',footerTagline:'少一点纠结，多一点好吃的。Made for hungry Huskies ♡',footerData:'吃什么只收录提供正餐的餐厅，不包括茶饮店、纯咖啡店和甜品店。价格、冷热与糖度未确认的标为“待核实”；仅已核对门店参与抽签。',footerScope:"范围：U-District 与 University Village。2026-10-13 已在 Google Maps 核对本页门店；Yelp 提供店名＋地址搜索，尚未逐店核对。未完成核对的旧条目不参与抽签。本页不是完整商家名录，不查询实时营业状态。",sources:'门店平台：',googleSource:'Google Maps',yelpSource:'Yelp'},en:{brand:'What to eat & drink?',foodTab:'🍜 What to eat',drinkTab:'🧋 What to drink',foodTitle:'What to eat today?',drinkTitle:'What to drink today?',foodSubtitle:'Less deciding. More delicious discoveries.',drinkSubtitle:'Boba, coffee or matcha? A little spin for a happier day.',wheelLabel:'A little spin of inspiration',filterTitle:'Pick your preferences',reset:'Reset filters ↺',filterDescription:'Match any selected option within a group, and all selected groups.',candidateTitle:'Your shortlist today',searchLabel:'Search the shortlist',searchPlaceholder:'Search a store or address…',empty:'No matching stores. Try relaxing your filters!',noSearch:'No search matches. Search changes the list only, not the draw.',noList:'Relax your filters to discover more places.',idle:'Equal odds for every candidate · Search changes the list only',busy:'Picking your next stop…',spinning:'Spinning… let the wheel decide!',foodSpin:'Spin for a meal! ↗',drinkSpin:'Spin for a drink! ↗',selected:'Selected: ',foodResult:'Today, eat at:',drinkResult:'Today, drink at:',recommendation:'Place information',maps:'Find it on Google Maps ↗',source:'Search this place on Yelp ↗',again:'Pick another / Spin again ↻',reroll:'The next spin excludes this store. All remaining stores have equal odds.',single:'Only one candidate. Relax your filters to discover more options.',uvAddress:'Inside University Village',udAddress:'Address unverified · U-District',close:'Close result dialog',multiple:'Multiple',singleChoice:'Single',modeLabel:'Choose food or drinks',wheelAria:'Random selection wheel',filterAria:'Filter stores',footerTagline:'Less deciding, more delicious discoveries. Made for hungry Huskies ♡',footerData:'Food mode includes meal-serving restaurants, excluding tea shops, coffee-only cafés and dessert shops. Unconfirmed prices, temperature and sweetness are marked unverified. Only checked listings enter the draw.',footerScope:"Area: U-District and University Village. Listed places checked on Google Maps on October 13, 2026. Yelp links search by name and address; Yelp listings have not been individually verified. Unchecked old entries are excluded. This is a partial list, not a live opening-status service.",sources:'Place platforms:',googleSource:'Google Maps',yelpSource:'Yelp'}};
 const t=k=>copy[language][k],label=v=>language==='en'?(englishLabels[v]||v):v;
 const displayName=s=>language==='en'?s.name.replace(/\s*\([^)]*[\u3400-\u9fff][^)]*\)/g,''):s.name;
 const meta=s=>`${asArray(mode==='food'?s.cuisine:s.type).map(label).join(' / ')}${mode==='food'?' · '+label(s.budget):''} · ${s.region==='UD'?'U-District':'University Village'}`;
 const address=s=>s.address||t(s.region==='UV'?'uvAddress':'udAddress');
-function mapsURL(s){const area=s.region==='UV'?'University Village Seattle WA':'University District Seattle WA';return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent([s.name,s.address||area,'Seattle WA'].join(' '));}
-function applyLanguage(){document.documentElement.lang=language==='en'?'en':'zh-CN';document.title=language==='en'?'What to eat & drink? | UW · UD + UV':'今天吃什么 & 喝什么？｜UW · UD + UV';const ids={brand:'brand','tab-food':'foodTab','tab-drink':'drinkTab','wheel-label':'wheelLabel','filter-title':'filterTitle',reset:'reset','filter-description':'filterDescription','candidate-title':'candidateTitle','search-label':'searchLabel',empty:'empty','recommendation-label':'recommendation','result-map':'maps',again:'again','result-source':'source','footer-tagline':'footerTagline','footer-data':'footerData','footer-scope':'footerScope','sources-label':'sources','source-ud':'udSource','source-boba':'bobaSource','source-uv':'uvSource'};for(const [id,k]of Object.entries(ids))$(id).textContent=t(k);$('headline').textContent=t(mode==='food'?'foodTitle':'drinkTitle');$('subtitle').textContent=t(mode==='food'?'foodSubtitle':'drinkSubtitle');$('search').placeholder=t('searchPlaceholder');$('language').textContent=language==='en'?'中文':'English';$('language').setAttribute('aria-label',language==='en'?'切换为中文':'Switch to English');$('close-result').setAttribute('aria-label',t('close'));$('mode-tabs').setAttribute('aria-label',t('modeLabel'));$('wheel-card').setAttribute('aria-label',t('wheelAria'));$('filters').setAttribute('aria-label',t('filterAria'));const active=storeDirectory.filter(s=>(s.food||s.drink)&&s.status!=='尚未开业');const ud=active.filter(s=>s.region==='UD').length,uv=active.filter(s=>s.region==='UV').length;$('coverage').textContent=language==='en'?`UD: ${ud} places · UV: ${uv} places · Restaurants & drink spots`:`UD ${ud} 家 · UV ${uv} 家 · 餐厅与饮品店`;$('count').textContent=language==='en'?`${candidates.length} candidates`:`${candidates.length} 家候选`;$('spin').textContent=t(spinning?'busy':mode==='food'?'foodSpin':'drinkSpin');$('spin-status').textContent=spinning?t('spinning'):t('idle');renderFilters();for(const i of $('filters').elements)i.disabled=spinning;renderStores();drawWheel();if(dialog.open&&lastStore)fillResult(lastStore);}
+function mapsURL(s){return s.googleMapsUrl;}
+function applyLanguage(){document.documentElement.lang=language==='en'?'en':'zh-CN';document.title=language==='en'?'What to eat & drink? | UW · UD + UV':'今天吃什么 & 喝什么？｜UW · UD + UV';const ids={brand:'brand','tab-food':'foodTab','tab-drink':'drinkTab','wheel-label':'wheelLabel','filter-title':'filterTitle',reset:'reset','filter-description':'filterDescription','candidate-title':'candidateTitle','search-label':'searchLabel',empty:'empty','recommendation-label':'recommendation','result-map':'maps',again:'again','result-source':'source','footer-tagline':'footerTagline','footer-data':'footerData','footer-scope':'footerScope','sources-label':'sources','source-google':'googleSource','source-yelp':'yelpSource'};for(const [id,k]of Object.entries(ids))$(id).textContent=t(k);$('headline').textContent=t(mode==='food'?'foodTitle':'drinkTitle');$('subtitle').textContent=t(mode==='food'?'foodSubtitle':'drinkSubtitle');$('search').placeholder=t('searchPlaceholder');$('language').textContent=language==='en'?'中文':'English';$('language').setAttribute('aria-label',language==='en'?'切换为中文':'Switch to English');$('close-result').setAttribute('aria-label',t('close'));$('mode-tabs').setAttribute('aria-label',t('modeLabel'));$('wheel-card').setAttribute('aria-label',t('wheelAria'));$('filters').setAttribute('aria-label',t('filterAria'));const active=storeDirectory.filter(s=>(s.food||s.drink)&&hasVerifiedListing(s));const ud=active.filter(s=>s.region==='UD').length,uv=active.filter(s=>s.region==='UV').length;$('coverage').textContent=language==='en'?`UD: ${ud} places · UV: ${uv} places · Restaurants & drink spots`:`UD ${ud} 家 · UV ${uv} 家 · 餐厅与饮品店`;$('count').textContent=language==='en'?`${candidates.length} candidates`:`${candidates.length} 家候选`;$('spin').textContent=t(spinning?'busy':mode==='food'?'foodSpin':'drinkSpin');$('spin-status').textContent=spinning?t('spinning'):t('idle');renderFilters();for(const i of $('filters').elements)i.disabled=spinning;renderStores();drawWheel();if(dialog.open&&lastStore)fillResult(lastStore);}
 function renderFilters(){const form=$('filters');form.replaceChildren();for(const g of filterConfig[mode]){const fs=document.createElement('fieldset'),legend=document.createElement('legend'),detail=document.createElement('span'),options=document.createElement('div');legend.append(document.createTextNode(label(g.label)));detail.textContent=language==='en'?t(g.multi?'multiple':'singleChoice'):`${g.english} · ${t(g.multi?'multiple':'singleChoice')}`;legend.append(detail);fs.append(legend);options.className='options';let opts=g.options;if(mode==='food'&&g.key==='cuisine'){const present=new Set(foodStores.flatMap(s=>s.cuisine));opts=opts.filter(o=>present.has(typeof o==='string'?o:o.value));}const values=[...opts.map(o=>typeof o==='string'?{value:o,label:o}:o),{value:'',label:'不限'}],selected=preferences[mode][g.key]||[];for(const o of values){const item=document.createElement('label'),input=document.createElement('input'),text=document.createElement('span');item.className='option';input.type=g.multi?'checkbox':'radio';input.name=g.key;input.value=o.value;input.checked=o.value?selected.includes(o.value):!selected.length;text.textContent=label(o.label);item.append(input,text);options.append(item);}fs.append(options);form.append(fs);}}
 $('filters').addEventListener('change',e=>{if(spinning||!(e.target instanceof HTMLInputElement))return;const input=e.target,g=filterConfig[mode].find(i=>i.key===input.name);if(!g)return;if(!input.value)preferences[mode][g.key]=[];else if(g.multi){const selected=new Set(preferences[mode][g.key]||[]);if(input.checked)selected.add(input.value);else selected.delete(input.value);preferences[mode][g.key]=[...selected];}else preferences[mode][g.key]=[input.value];const selected=preferences[mode][g.key]||[];for(const i of $('filters').elements)if(i instanceof HTMLInputElement&&i.name===g.key)i.checked=i.value?selected.includes(i.value):!selected.length;updateCandidates();});
 $('filters').addEventListener('submit',e=>e.preventDefault());
-function updateCandidates(){const source=mode==='food'?foodStores:drinkStores;candidates=source.filter(s=>(s.status!=='尚未开业'||(preferences[mode].status||[]).includes('尚未开业'))&&filterConfig[mode].every(g=>{const selected=preferences[mode][g.key]||[];return !selected.length||selected.some(v=>asArray(s[g.key]).includes(v));}));rotation=0;$('count').textContent=language==='en'?`${candidates.length} candidates`:`${candidates.length} 家候选`;$('empty').hidden=candidates.length>0;$('spin').disabled=!candidates.length;$('spin-status').textContent=t('idle');renderStores();drawWheel();}
-function renderStores(){const list=$('store-list');list.replaceChildren();const query=$('search').value.trim().toLowerCase();let visible=0;candidates.forEach((s,index)=>{if(query&&!`${s.name} ${s.address}`.toLowerCase().includes(query))return;visible++;const li=document.createElement('li'),content=document.createElement('div'),link=document.createElement('a'),details=document.createElement('small'),addr=document.createElement('small'),source=document.createElement('a');li.className='store';content.className='store-content';link.textContent=displayName(s);link.href=mapsURL(s);link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label',`${displayName(s)} · Google Maps`);details.textContent=meta(s);addr.textContent=address(s);source.className='source';source.href=s.source;source.target='_blank';source.rel='noopener noreferrer';source.textContent=s.status==='目录收录'?t('source'):`${label(s.status)} · ${t('source')}`;content.append(link,details,addr,source);li.append(content);list.append(li);});$('list-count').textContent=language==='en'?`Showing ${visible} / ${candidates.length}`:`显示 ${visible} / ${candidates.length} 家`;$('list-empty').hidden=visible>0;$('list-empty').textContent=t(candidates.length?'noSearch':'noList');}
+function updateCandidates(){const source=mode==='food'?foodStores:drinkStores;candidates=source.filter(s=>hasVerifiedListing(s)&&filterConfig[mode].every(g=>{const selected=preferences[mode][g.key]||[];return !selected.length||selected.some(v=>asArray(s[g.key]).includes(v));}));rotation=0;$('count').textContent=language==='en'?`${candidates.length} candidates`:`${candidates.length} 家候选`;$('empty').hidden=candidates.length>0;$('spin').disabled=!candidates.length;$('spin-status').textContent=t('idle');renderStores();drawWheel();}
+function renderStores(){const list=$('store-list');list.replaceChildren();const query=$('search').value.trim().toLowerCase();let visible=0;candidates.forEach((s,index)=>{if(query&&!`${s.name} ${s.address}`.toLowerCase().includes(query))return;visible++;const li=document.createElement('li'),content=document.createElement('div'),link=document.createElement('a'),details=document.createElement('small'),addr=document.createElement('small'),source=document.createElement('a');li.className='store';content.className='store-content';link.textContent=displayName(s);link.href=mapsURL(s);link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label',`${displayName(s)} · Google Maps`);details.textContent=meta(s);addr.textContent=address(s);const checked=document.createElement('small');checked.textContent=language==='en'?'Google Maps listing checked · '+s.verifiedOn:'Google Maps 门店已核对 · '+s.verifiedOn;source.className='source';source.href=s.yelpSearchUrl;source.target='_blank';source.rel='noopener noreferrer';source.textContent=t('source');content.append(link,details,addr,checked,source);li.append(content);list.append(li);});$('list-count').textContent=language==='en'?`Showing ${visible} / ${candidates.length}`:`显示 ${visible} / ${candidates.length} 家`;$('list-empty').hidden=visible>0;$('list-empty').textContent=t(candidates.length?'noSearch':'noList');}
 function drawWheel(){const radius=278;ctx.clearRect(0,0,600,600);ctx.save();ctx.translate(300,300);ctx.beginPath();ctx.arc(0,0,radius+10,0,TAU);ctx.fillStyle='#efe9df';ctx.fill();if(!candidates.length){ctx.beginPath();ctx.arc(0,0,radius,0,TAU);ctx.fillStyle='#f3eee6';ctx.fill();ctx.restore();canvas.setAttribute('aria-label',t('empty'));return;}ctx.rotate(rotation);const step=TAU/candidates.length,palette=palettes[mode];candidates.forEach((s,index)=>{const start=-Math.PI/2-step/2+index*step;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,radius,start,start+step);ctx.closePath();ctx.fillStyle=palette[index%palette.length];ctx.fill();ctx.strokeStyle='#fffefa';ctx.lineWidth=2;ctx.stroke();});ctx.restore();canvas.setAttribute('aria-label',language==='en'?`Unlabeled wheel with ${candidates.length} equal sectors`:`无文字转盘，共 ${candidates.length} 个等分扇区`);}
 function setMode(next){if(spinning||next===mode)return;mode=next;lastStore=null;$('search').value='';document.body.dataset.mode=mode;for(const tab of tabs){const active=tab.dataset.mode===mode;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;}$('panel').setAttribute('aria-labelledby',`tab-${mode}`);$('hub-icon').textContent=mode==='food'?'🍜':'🧋';renderFilters();updateCandidates();applyLanguage();}
 tabs.forEach(tab=>{tab.addEventListener('click',()=>setMode(tab.dataset.mode));tab.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)||spinning)return;e.preventDefault();const index=tabs.indexOf(tab),next=e.key==='Home'?tabs[0]:e.key==='End'?tabs.at(-1):tabs[mod(index+(e.key==='ArrowRight'?1:-1),tabs.length)];setMode(next.dataset.mode);next.focus();});});
@@ -5035,7 +1860,7 @@ $('reset').addEventListener('click',()=>{if(spinning)return;preferences[mode]={}
 function setBusy(busy){spinning=busy;$('panel').setAttribute('aria-busy',String(busy));$('spin').disabled=busy||!candidates.length;$('reset').disabled=busy;tabs.forEach(t=>t.disabled=busy);[...$('filters').elements].forEach(i=>i.disabled=busy);$('spin').textContent=t(busy?'busy':mode==='food'?'foodSpin':'drinkSpin');}
 function randomIndex(length){if(length<=1)return 0;if(!globalThis.crypto?.getRandomValues)return Math.floor(Math.random()*length);const b=new Uint32Array(1),limit=Math.floor(4294967296/length)*length;do{crypto.getRandomValues(b);}while(b[0]>=limit);return b[0]%length;}
 function spin(excludeLast=false){if(spinning||!candidates.length)return;const pool=candidates.map((store,index)=>({store,index})).filter(i=>!excludeLast||candidates.length===1||i.store!==lastStore),choice=pool[randomIndex(pool.length)],step=TAU/candidates.length,start=mod(rotation,TAU),destination=mod(-choice.index*step,TAU),travel=6*TAU+mod(destination-start,TAU),duration=matchMedia('(prefers-reduced-motion: reduce)').matches?0:4400;setBusy(true);$('spin-status').textContent=t('spinning');let startTime;function frame(now){if(startTime===undefined)startTime=now;const progress=duration===0?1:Math.min((now-startTime)/duration,1),eased=1-Math.pow(1-progress,4);rotation=start+travel*eased;drawWheel();if(progress<1)requestAnimationFrame(frame);else{rotation=destination;drawWheel();lastStore=choice.store;setBusy(false);$('spin-status').textContent=t('selected')+displayName(choice.store);showResult(choice.store);}}requestAnimationFrame(frame);}
-function fillResult(s){$('result-icon').textContent=mode==='food'?'🍜':'🧋';$('result-kicker').textContent=t(mode==='food'?'foodResult':'drinkResult');$('result-name').textContent=displayName(s);$('result-note').textContent=language==='zh'?s.note:`Menu: ${asArray(mode==='food'?s.cuisine:s.type).map(label).join(' / ')}. Open the store information for current menu and recommendations.${s.type.includes('精酿/酒吧（21+）')?' Alcohol is for ages 21+ only.':''}`;$('result-map').href=mapsURL(s);$('result-address').textContent=address(s);$('result-source').href=s.source;$('result-meta').textContent=meta(s);$('reroll-hint').textContent=t(candidates.length>1?'reroll':'single');$('again').disabled=candidates.length<2;}
+function fillResult(s){$('result-icon').textContent=mode==='food'?'🍜':'🧋';$('result-kicker').textContent=t(mode==='food'?'foodResult':'drinkResult');$('result-name').textContent=displayName(s);$('result-note').textContent=language==='zh'?s.note:'Open Google Maps for the menu and opening hours. The Yelp link searches by name and address.';$('result-map').href=mapsURL(s);$('result-address').textContent=address(s);$('result-source').href=s.yelpSearchUrl;$('result-meta').textContent=meta(s);$('reroll-hint').textContent=t(candidates.length>1?'reroll':'single');$('again').disabled=candidates.length<2;}
 function showResult(s){fillResult(s);dialog.showModal();}
 $('spin').addEventListener('click',()=>spin());$('close-result').addEventListener('click',()=>dialog.close());$('again').addEventListener('click',()=>{if(candidates.length<2)return;dialog.close();spin(true);});dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});dialog.addEventListener('close',()=>{if(!spinning)$('spin').focus();});$('search').addEventListener('input',renderStores);
 renderFilters();updateCandidates();applyLanguage();
